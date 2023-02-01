@@ -1,0 +1,303 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load mathfilters %}
+
+
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">New Estimate</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">The Shop</a></li>
+                                            <li class="breadcrumb-item active">New estimate</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Adding new estimate...</h4>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <section class="steppernav">
+                                                    <a href=""><span>1</span> Customer details</a>
+                                                    <a href=""><span>2</span> Vehicle</a>
+                                                    <a href=""><span>3</span> Parts</a>
+                                                    <a href=""><span>4</span> Labor</a>
+                                                    <a href=""><span>5</span> Pictures</a>
+                                                    <a href=""><span>6</span> Payments</a>
+                                                    <a href=""  class="active"><span>7</span> Preview</a>
+                                                    <a href=""><span>8</span> Confirm</a>
+{#                                                    <a href="{% url 'Presupuestos:step1' %}"><span>1</span> Customer details</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step2' %}"><span>2</span> Vehicle</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step3' %}"><span>3</span> Parts</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step4' %}"><span>4</span> Labor</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step5' %}"><span>5</span> Pictures</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step6' %}"><span>6</span> Payments</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step7' %}"  class="active"><span>7</span> Preview</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step8' %}"><span>8</span> Confirm</a>#}
+                                                </section>
+                                            </div>
+                                            <div class="col-md-9">
+
+                                                <section>
+                                                    <form method="post">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="d-flex flex-column flex-md-row justify-content-start align-items-center mb-3">
+                                                                            
+                                                                        </div>
+                                                                        
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <h4 class="card-title">Estimate preview</h4>
+                                                                            </div>
+                                                                        </div>
+    
+                                                                        <div class="estimatepreview">
+                                                                            <div>
+                                                                                <p class="mb-0">Choose technician:&nbsp; &nbsp;&nbsp;</p>
+                                                                                 <select name="technican_select" id="" class="form-control">
+                                                                                        <option value="">Select a technician</option>
+                                                                                        {% for technican in technicans %}
+                                                                                            <option value="{{technican.id}}">{{technican.nombreTecnico}}</option>
+                                                                                        {% endfor%}
+                                                                                 </select>
+                                                                            </div>
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" type="checkbox" id="formCheck2">
+                                                                                <label class="form-check-label" for="formCheck2">
+                                                                                    Spanish translation
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+    
+                                                                        <hr>                                                                   
+    
+                                                                        <div class="invoice-title">
+                                                                            <h4 class="float-end font-size-16">Estimate #{{ step_estimate.id }}
+                                                                                {% if step_estimate.status == "PENDING" %}
+                                                                                    <span class="badge bg-warning font-size-12 ms-2">Pending</span>
+                                                                                {% elif step_estimate.status == "CANCELED" %}
+                                                                                    <span class="badge bg-danger font-size-12 ms-2">Canceled</span>
+                                                                                {% else %}
+                                                                                    <span class="badge bg-success font-size-12 ms-2">Paid</span>
+                                                                                {% endif %}
+                                                                            <div class="mb-4">
+                                                                                <strong>LOGO</strong>
+                                                                            </div>
+                                                                            </h4>
+
+                                                                            <div class="text-muted">
+                                                                                {% load static %}
+                                                                                <img src="{% get_media_prefix %}{{step_vehicle.new_name}}" height="68"/>
+                                                                                <!--<p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> {{presupuestosclientes}}</p>-->
+                                                                                <!--<p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> {{presupuestoscarros}}</p>-->
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <hr class="my-4">
+                                
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4">
+                                                                                <div class="text-muted">
+                                                                                    <h5 class="font-size-16 mb-3">Customer information:</h5>
+                                                                                    <h5 class="font-size-15 mb-2">{{step_client.titulo}}{{step_client.apellido}}{{step_client.nombre}}</h5>
+                                                                                    <!--<p>License: <strong>KLJFD838F88</strong></p>-->
+                                                                                    <p class="mb-1">{{step_client.correo}}</p>
+                                                                                    <p>{{step_client.tel}}</p>
+                                                                                    <p>{{step_client.telefona}}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="text-muted">
+                                                                                    <h5 class="font-size-16 mb-3">Vehicle information:</h5>
+                                                                                    <h5 class="font-size-15 mb-2">License plate:{{step_vehicle.placas}}</h5>
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-6">
+                                                                                            <p class="mb-1">Make: <strong>{{step_vehicle.marca}}</strong></p>
+                                                                                            <p class="mb-1">Model: <strong>{{step_vehicle.modelo}}</strong></p>
+                                                                                            <p class="mb-1">Color: <strong>{{step_vehicle.color}}</strong></p>
+                                                                                            <p class="mb-1">Year: <strong>{{step_vehicle.año}}</strong></p>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                            <p class="mb-1">Type: <strong>{{step_vehicle.tipo}}</strong></p>
+                                                                                            <p class="mb-1">VIN number: <strong>{{step_vehicle.vin}}</strong></p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="text-muted text-sm-end">
+                                                                                    <div>
+                                                                                        <h5 class="font-size-16 mb-1">Estimate Date:</h5>
+                                                                                        <p>{{step_estimate.register_time}}</p>
+                                                                                    </div>
+                                                                                    <div class="mt-4">
+                                                                                        <h5 class="font-size-16 mb-3">Summary:</h5>
+                                                                                        <p class="mb-1">{{step_estimate.resumen}}</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                
+                                                                        <!-- Labor table -->
+                                                                        <div class="py-2 my-4">
+                                                                            <h5 class="font-size-15">Labor summary</h5>
+                                
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-nowrap table-centered mb-0">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Description</th>
+                                                                                            <th>Labor rate</th>
+                                                                                            <th>Hours:Min</th>
+                                                                                            <th>Tax Free</th>
+                                                                                            <th class="text-end" >Total</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    {% for labor in step_manoobra%}
+                                                                                        <tr>
+                                                                                            <td>{{labor.descripcion}}</td>
+                                                                                            <td>{{labor.tarifa}}</td>
+                                                                                            <td>{{labor.horas}}:{{labor.minutos}}</td>
+                                                                                            <td >{{labor.libre_impuestos}}</td>
+                                                                                            <td class="text-end">{{labor.tarifa_total|floatformat:2}}</td>
+                                                                                        </tr>
+                                                                                    {% endfor %}
+
+                                                                                        <tr>
+                                                                                            <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                                                                            <td class="border-0 text-end"><h4 class="m-0">${{step_estimate.total_manaobra|floatformat:2}}</h4></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                           
+                                                                        </div>
+                            
+                            
+                                                                        <!-- Parts table -->
+                                                                        <div class="py-2 my-4">
+                                                                            <h5 class="font-size-15">Parts summary</h5>
+                                
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-nowrap table-centered mb-0">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>Description</th>
+                                                                                            <th>Price</th>
+                                                                                            <th>Quantity</th>
+                                                                                            <th>Disc.%</th>
+                                                                                            <th class="text-end" style="width: 120px;">Total</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        {% for parte in step_parte %}
+                                                                                        <tr>
+                                                                                            <td>{{parte.descripcion}}</td>
+                                                                                            <td>{{parte.unit_price}}</td>
+                                                                                            <td>{{parte.quantity}}</td>
+                                                                                            <td>{{parte.descuento_parte}}</td>
+                                                                                            <td class="text-end">${{parte.total_price|floatformat:2}}</td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        <tr>
+                                                                                            <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                                                                            <td class="border-0 text-end"><h4 class="m-0">${{step_estimate.total_parte|floatformat:2}}</h4></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th colspan="4">
+                                                                                               <strong>*</strong> Part supplied by the insurance company or the customer.
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row" colspan="4" class="border-0 text-end"><strong>Total: </strong></th>
+                                                                                            <td class="border-0 text-end"><strong>${{total|floatformat:2}}</strong></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row" colspan="4" class="border-0 text-end">Discount: </th>
+                                                                                                <td class="border-0 text-end">- ${{step_estimate.descuentoTotal_parte|addition:step_estimate.descuentoTotal_manaobra|floatformat:2}}</td>
+                                                                                            </tr>
+                                                                                        <tr>
+                                                                                        <tr>
+                                                                                            <th scope="row" colspan="4" class="border-0 text-end">Total Paid: </th>
+                                                                                                <td class="border-0 text-end">- ${{payment|floatformat:2}}</td>
+                                                                                            </tr>
+                                                                                        <tr>
+                                                                                            <th scope="row" colspan="4" class="border-0 text-end"><h4>Balance due</h4></th>
+                                                                                            <td class="border-0 text-end"><h4 class="m-0">${{balance|floatformat:2}}</h4></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                            
+                                                                            <!-- Legal -->
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                    <small>I authorize the above repairs and necessary materials. I agree to pay reasonable storage on vehicle left more than 2 working days after notification that the job is completed.</small>
+                                                                                    <br><br>
+                                                                                    <small>This company does not assume any responsibility whatsoever for vehicles or other equipment left for repairs, or for articles left in vehicles or equipment.
+                                                                                        Vehicles driven by our employees at owners risk. In the event of non-payment of the said total charge, the owner authorizes this company to repossess
+                                                                                        the vehicle or article and hold it until this total bill is paid. All warranty work must be done by this company who will accept no financial responsibility
+                                                                                        whatsoever if warranty work is done elsewhere. 90 days warranty covers malfunction in labor job.
+                                                                                        Authorized by:</small>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+
+                                                        </div>
+                                                        <a href="{% url 'Presupuestos:step6' %}" class="btn btn-secondary">Previous</a>
+                                                        <a href="{% url 'Presupuestos:step8' %}"><button class="btn btn-primary" type="submit">Next</button></a>
+
+                                                    </form>
+
+                                                </section>
+
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+
+                    
+                </div>
+            </div>             <!-- End Page-content -->
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Vehicles</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">The Shop</a></li>
+                                            <li class="breadcrumb-item active">Vehicles</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4><b>License plate:</b> {{ carros.placas }}</h4>
+                                        <hr>
+                                        <p><b>Model: </b>{{ carros.modelo }}</p>
+                                        <p><b>Year: </b>{{ carros.año }}</p>
+                                        <p><b>Make: </b>{{ carros.marca }}</p>
+                                        <p><b>Type: </b>{{ carros.tipo }}</p>
+                                        <p><b>VIN: </b>{{ carros.vin }}</p>
+                                        <p><b>Color: </b>{{ carros.color }}</p>
+                                        <p><b>Engine: </b>{{ carros.motor }}</p>
+                                        <p><b>Insurance agent: </b>{{ carros.agente_seguros }}</p>
+                                        <p><b>Insurance company: </b>{{ carros.compañia_seguros }}</p>
+                                        <p><b>Policy No.: </b>{{ carros.no_politica }}</p>
+                                        <p><b>Customer: </b>{{ carros.cliente }}</p>
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                 <h4 class="card-title mb-3">Vehicle Picture</h4>
+                                            </div>
+                                        </div>
+                                        {% load static %}
+                                        <img src="{% get_media_prefix %}{{carros.new_name}}" height="68"/>
+                                        <br>
+                                        <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                     <h4 class="card-title mb-3">Vehicle Warranty</h4>
+                                                </div>
+                                        </div>
+                                        <img src="{% get_media_prefix %}{{carros.garantia_name}}" height="68" alt="No Picture"/>
+                                        <br>
+
+                                </div>
+
+                            </div> <!-- end col -->
+
+                        </div> <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+            </div>
+
+{% endblock %} 

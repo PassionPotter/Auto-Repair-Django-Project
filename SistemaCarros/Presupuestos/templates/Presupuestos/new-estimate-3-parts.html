@@ -1,0 +1,242 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">New Estimate</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">The Shop</a></li>
+                                            <li class="breadcrumb-item active">New estimate</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Adding new estimate...</h4>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <section class="steppernav">
+                                                    <a href=""><span>1</span> Customer details</a>
+                                                    <a href=""><span>2</span> Vehicle</a>
+                                                    <a href=""   class="active"><span>3</span> Parts</a>
+                                                    <a href=""><span>4</span> Labor</a>
+                                                    <a href=""><span>5</span> Pictures</a>
+                                                    <a href=""><span>6</span> Payments</a>
+                                                    <a href=""><span>7</span> Preview</a>
+                                                    <a href=""><span>8</span> Confirm</a>
+{#                                                    <a href="{% url 'Presupuestos:step1' %}"><span>1</span> Customer details</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step2' %}"><span>2</span> Vehicle</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step3' %}"   class="active"><span>3</span> Parts</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step4' %}"><span>4</span> Labor</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step5' %}"><span>5</span> Pictures</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step6' %}"><span>6</span> Payments</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step7' %}"><span>7</span> Preview</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step8' %}"><span>8</span> Confirm</a>#}
+                                                </section>
+                                            </div>
+                                            <div class="col-md-9">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <section id="section-form">
+                                                <div>
+                                                    <form method="post" id="part-form-container calx_form">
+                                                        {% csrf_token %}
+                                                        <input type="button" class="btn btn-block btn-default btn-success mb-4 add-new-form" onclick="addForm()" value="+ Add part" />
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="row mb-3">
+                                                                            <div class="col-md-12">
+                                                                                <div class="mb-3">
+
+                                                                                    <label for="verticalnav-email-input">Summary</label>
+                                                                                        <textarea name="resumen" id="verticalnav-email-input" class="form-control"></textarea>
+                                                                                    </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <h4 class="card-title">Parts list</h4>
+                                                                        <p class="card-title-desc">Add the parts that you need to include.</p>
+
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered table-nowrap align-middle" id="childTable1">
+                                                                                <thead class="table-info">
+                                                                                  <tr>
+                                                                                    <th scope="col">Code</th>
+                                                                                    <th scope="col">Description</th>
+                                                                                    <th scope="col">Quantity</th>
+                                                                                    <th scope="col">Unit Price</th>
+                                                                                    <th scope="col">Discount</th>
+                                                                                    <th scope="col">Total Price</th>
+                                                                                    <th scope="col">Tax - Free</th>
+                                                                                    <th scope="col">Brought by client</th>
+                                                                                    <th scope="col">Actions</th>
+                                                                                  </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                {{ formset.management_form }}
+                                                                                {% for form in formset %}
+                                                                                <div class="part-form">
+                                                                                  <tr>
+                                                                                    <td>
+                                                                                        {{form.codigo}}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.descripcion}}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.quantity}}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.unit_price}}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.descuento_parte}}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.total_price}}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="form-check">
+                                                                                               {{form.tax_free}}
+                                                                                            <label class="form-check-label" for="formrow-customCheck"></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="form-check">
+                                                                                                {{form.comprado_cliente}}
+                                                                                            <label class="form-check-label" for="formrow-customCheck2"></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                     <td scope="col">
+                                                                                        {{ form.DELETE|add_class:"d-none" }}
+                                                                                        <button type="button" class="btn btn-danger" onclick="deleteForm(this)">Delete</button>
+                                                                                    </td>
+                                                                                  </tr>
+                                                                                </div>
+                                                                                {% endfor %}
+                                                                                <tr id="empty-row" class="part-form">
+                                                                                    <td scope="col">{{formset.empty_form.codigo}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.descripcion}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.quantity}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.unit_price}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.descuento_parte}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.total_price}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.tax_free}}</td>
+                                                                                    <td scope="col">{{formset.empty_form.comprado_cliente}}</td>
+                                                                                    <td scope="col">{{ formset.empty_form.DELETE|add_class:"d-none" }}<button type="button" class="btn btn-danger" onclick="deleteForm(this)">Delete</button></td>
+
+                                                                                </tr>
+                                                                                </tbody>
+
+                                                                              </table>
+
+                                                                        </div>
+
+
+                                                                    </div>
+
+
+                                                                </div>
+
+
+                                                            </div> <!-- end col -->
+
+                                                        </div> <!-- end row -->
+                                                        <div class="row justify-content-start">
+                                                            <div class="col-md-3">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="parts_discount">Discount</label>
+                                                                    <div class="mb-3">
+                                                                        <div class="form-check form-check-inline">
+                                                                                <ul id="id_descuento_parte" class="custom-radio-list">
+                                                                                    <li>
+                                                                                        <label for="id_descuento_parte_0">
+                                                                                            <input type="radio" onchange="descuentoTotalParteFuncion()" name="descuento_parte" value="Quantity" class="custom-radio-list" maxlength="255" required="" id="id_descuento_parte_0" checked="">
+                                                                                            Quantity
+                                                                                        </label>
+
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <label for="id_descuento_parte_1">
+                                                                                            <input type="radio" onchange="descuentoTotalParteFuncion()" name="descuento_parte" value="Percentage" class="custom-radio-list" maxlength="255" required="" id="id_descuento_parte_1" >
+                                                                                            Percentage
+                                                                                        </label>
+
+                                                                                    </li>
+                                                                                </ul>
+                                                                        </div>
+
+                                                                    </div>
+                                                                        <div>
+                                                                                <input type="number" name="descuentoTotal_parte" class="form-control" onchange="descuentoTotalParteFuncion()" placeholder="put the number" value="0" min="0" id="id_descuentoTotal_parte">
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-start">
+                                                            <div class="col-md-3">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="parts_total"><strong>TOTAL:</strong></label>
+                                                                    <input type="number" name="total_parte" class="form-control" placeholder="$0.00" readonly step="any" id="id_total_parte">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a href="{% url 'Presupuestos:step2' %}" class="btn btn-secondary">Previous</a>
+                                                        <a href="{% url 'Presupuestos:step4' %}"><button class="btn btn-primary" type="submit">Next</button></a>
+                                                    </form>
+                                                  </div>
+                                            </section>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+
+                    
+                </div>
+                <!-- End Page-content -->
+
+            </div>       <!-- End Page-content -->
+{% endblock %}

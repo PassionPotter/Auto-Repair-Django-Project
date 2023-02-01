@@ -1,0 +1,101 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load i18n %}
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+   <div class="page-content">
+      <div class="container-fluid">
+
+         <!-- start page title -->
+         <div class="row">
+            <div class="col-12">
+               <div class="page-title-box d-flex align-items-center justify-content-between">
+                  <h4 class="mb-0">{% trans "Customers" %}</h4>
+
+                  <div class="page-title-right">
+                     <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">{% trans "Customers" %}</li>
+                     </ol>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end page title -->
+         <div class="row">
+            <div class="col-12">
+               <form method="post">
+                  {% csrf_token %}
+                  <div class="d-flex justify-content-between">
+                     <a href="{% url 'Clientes:clientes_add' %}">
+                     <button type="button" class="btn btn-success mb-3 waves-effect waves-light" onclick="addNewCustomer()">{% trans "Add new" %}</button>
+                     </a>
+                     <div class="col-md-6 mb-3 d-flex align-items-center justify-content-end">
+                        <div class="span-container d-flex">
+                           <input type="date" name="fromdate" class="form-control" data-date-inline-picker="true">
+                           <input type="date" name="todate" class="form-control" data-date-inline-picker="true">
+                           <input type="submit" value="{% trans 'Search' %}" class="btn btn-secondary">
+                           <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                        </div>
+                        <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                     </div>
+                  </div>
+                  <div class="card">
+                     <div class="card-body">
+                        {% if clientes %}
+                        <div class="table-rep-plugin">
+                           <div class="table-responsive mb-0" data-pattern="priority-columns">
+                              <table id="tech-companies-1" class="table">
+                                 <thead>
+                                    <tr>
+                                       <th>{% trans "Customer ID" %}</th>
+                                       <th data-priority="1">{% trans "Name" %}</th>
+                                       <th data-priority="1">{% trans "Company name" %}</th>
+                                       <th data-priority="1">{% trans "Customer type" %}</th>
+                                       <!--                                                        <th data-priority="1">Vehicles</th>-->
+                                       <th>{% trans "Register since" %}</th>
+                                       <th data-priority="1">{% trans "Actions" %}</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    {% for cliente in clientes %}
+                                    <tr>
+                                       <td>{{cliente.id}}</td>
+
+                                       <td>{{cliente.nombre}}</td>
+                                       <td>{{cliente.corporacion}}</td>
+                                       <td>{{cliente.tipo}}</td>
+                                       <td>{{cliente.fecha_registro}}</td>
+                                       <td>
+                                          <!--                                                                <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil-search-alt"></i></a>-->
+                                          <a href="{% url 'Clientes:clientes_detail' cliente.id%}">{% trans "Detail" %}</a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'Clientes:clientes_edit' cliente.id%}">{% trans "Edit" %}</a>
+                                       </td>
+                                       <td>
+                                          <a href="{% url 'Clientes:clientes_delete' cliente.id%}" class="text-danger">{% trans "Delete" %}</a>
+                                       </td>
+                                    </tr>
+                                    {% endfor %}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        {% endif %}
+                     </div>
+               </form>
+               </div>
+            </div>
+            <!-- end col -->
+         </div>
+         <!-- end row -->
+      </div>
+      <!-- container-fluid -->
+   </div>
+   <!-- End Page-content -->
+</div>
+{% endblock %}

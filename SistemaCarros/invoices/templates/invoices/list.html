@@ -1,0 +1,421 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+
+
+           <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Invoices</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Invoices</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end page title -->
+
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;" id="datatable">
+                                        <thead>
+                                            <tr class="bg-transparent">
+                                                <th style="width: 24px;">
+                                                    <div class="form-check text-center font-size-16">
+                                                        <input type="checkbox" class="form-check-input" id="invoicecheck">
+                                                        <label class="form-check-label" for="invoicecheck"></label>
+                                                    </div>
+                                                </th>
+                                                <th>Invoice ID</th>
+                                                <th>Date</th>
+                                                <th>Billing Name</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Download PDF</th>
+                                                <th style="width: 120px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for invoice in invoices %}
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check text-center font-size-16">
+                                                        <input type="checkbox" class="form-check-input" id="invoicecheck1">
+                                                        <label class="form-check-label" for="invoicecheck1"></label>
+                                                    </div>
+                                                </td>
+
+                                                <td><a href="javascript: void(0);" class="text-dark fw-bold">#MN{{ invoice.id  }}</a> </td>
+                                                <td>
+                                                    {{invoice.date_register.date}}
+                                                </td>
+                                                <td>
+                                                    {{invoice.getBillingName}}
+                                                </td>
+                                                <td>
+                                                    ${{invoice.amount}}
+                                                </td>
+
+                                                <td>
+                                                    {% if invoice.status == "PENDING" %}
+                                                        <div class="badge bg-soft-warning font-size-12">Pending</div>
+                                                    {% elif invoice.status == "PAID" %}
+                                                        <div class="badge bg-soft-primary font-size-12">Paid</div>
+                                                    {% endif %}
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <a href="{% url 'invoices:download-invoice' invoice.id %}" class="btn btn-light btn-sm w-xs">PDF <i class="uil uil-download-alt ms-2"></i></a>
+                                                    </div>
+                                                </td>
+
+
+                                                <td>
+                                                    <a href="{% url 'invoices:detail' invoice.id %}"><i class="uil uil-search font-size-18"></i></a>
+
+                                                    <a href="{% url 'invoices:eliminar_invoice' invoice.id%}" class="text-danger" ><i class="uil uil-trash-alt font-size-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+               <!-- The Modal -->
+               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <h5 class="modal-title" id="exampleModalLabel"></h5> -->
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-lg-12">
+
+
+
+
+                                    <div class="estimatepreview">
+                                        <h4 class="card-title">Invoice preview</h4>
+
+                                    </div>
+
+                                    <hr>
+
+
+                                    <div class="invoice-title">
+                                        <h4 class="float-end font-size-16">Invoice #0001 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+
+                                        <div class="mb-4">
+                                            <strong>LOGO</strong>
+                                        </div>
+                                        <div class="text-muted">
+                                            <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> email@domain.com</p>
+                                            <p class="mb-1"><i class="uil uil-phone me-1"></i> 012-345-6789</p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="text-muted">
+                                                <h5 class="font-size-16 mb-3">Customer information:</h5>
+                                                <h5 class="font-size-15 mb-2">Mr. David Hammet</h5>
+                                                <p>License: <strong>KLJFD838F88</strong></p>
+                                                <p class="mb-1">davidhammet@domain.com</p>
+                                                <p>0123-456-7890</p>
+                                                <p>0123-456-7890</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="text-muted">
+                                                <h5 class="font-size-16 mb-3">Vehicle information:</h5>
+                                                <h5 class="font-size-15 mb-2">License plate: 5BWT273</h5>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1">Make: <strong>Susuki</strong></p>
+                                                        <p class="mb-1">Model: <strong>XL-7</strong></p>
+                                                        <p class="mb-1">Color: <strong>Red</strong></p>
+                                                        <p class="mb-1">Year: <strong>Red</strong></p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1">Type: <strong>Sedan</strong></p>
+                                                        <p class="mb-1">VIN number: <strong>XDLKJFE090</strong></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="text-muted text-sm-end">
+                                                <div>
+                                                    <h5 class="font-size-16 mb-1">Invoice Date:</h5>
+                                                    <p>09 Dec, 2021</p>
+                                                </div>
+                                                <div class="mt-4">
+                                                    <h5 class="font-size-16 mb-3">Summary:</h5>
+                                                    <p class="mb-1">Remove / replace brake pads, front hub and spark plugs.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Labor table -->
+                                    <div class="py-2 my-4">
+                                        <h5 class="font-size-15">Labor summary</h5>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-nowrap table-centered mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Description</th>
+                                                        <th>Labor rate</th>
+                                                        <th>Hours:Min</th>
+                                                        <th>Disc.%</th>
+                                                        <th>Total Disc.</th>
+                                                        <th class="text-end" style="width: 120px;">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="first-column">Remove/Replace spark plugs</th>
+                                                        <td>70.00</td>
+                                                        <td>1:18</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$91.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="first-column">Remove/Replace front hub</th>
+                                                        <td>70.00</td>
+                                                        <td>1:17</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$89.83</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="first-column">Remove/Replace change oil & filter</th>
+                                                        <td>70.00</td>
+                                                        <td>0:17</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$19.83</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                                                        <td class="border-0 text-end"><h4 class="m-0">$200.66</h4></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+
+                                    <!-- Parts table -->
+                                    <div class="py-2 my-4">
+                                        <h5 class="font-size-15">Parts summary</h5>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-nowrap table-centered mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Quantity</th>
+                                                        <th>Description</th>
+                                                        <th>Price</th>
+                                                        <th>Disc.%</th>
+                                                        <th>Total Disc.</th>
+                                                        <th class="text-end" style="width: 120px;">Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th class="quantity-column">2</th>
+                                                        <td>Front hub</td>
+                                                        <td>77.62</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$155.24</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="quantity-column">1</th>
+                                                        <td>Brake pads</td>
+                                                        <td>38.37</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$38.37</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="quantity-column">6</th>
+                                                        <td>Sparks plugs</td>
+                                                        <td>5.48</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$32.88</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="quantity-column">4</th>
+                                                        <td>10W40 motor oil</td>
+                                                        <td>77.62</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                        <td class="text-end">$155.24</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                                                        <td class="border-0 text-end"><h4 class="m-0">$253.89</h4></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="6">
+                                                           <strong>*</strong> Part supplied by the insurance company or the customer.
+                                                        </th>
+                                                    </tr>
+
+
+
+
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="text-end">Total sum: </th>
+                                                        <td class="text-end">$454.55</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="border-0 text-end">Discount: </th>
+                                                        <td class="border-0 text-end">- $50.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="text-end">Subtotal: </th>
+                                                        <td class="text-end">$454.55</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="border-0 text-end">Tax 9.5% :</th>
+                                                        <td class="border-0 text-end">$24.12</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="border-0 text-end"><strong>Total: </strong></th>
+                                                        <td class="border-0 text-end"><strong>$478.67</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row" colspan="5" class="border-0 text-end"><h4>Balance due</h4></th>
+                                                        <td class="border-0 text-end"><h4 class="m-0">$0.00</h4></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Legal -->
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <small>I authorize the above repairs and necessary materials. I agree to pay reasonable storage on vehicle left more than 2 working days after notification that the job is completed.</small>
+                                                <br><br>
+                                                <small>This company does not assume any responsibility whatsoever for vehicles or other equipment left for repairs, or for articles left in vehicles or equipment.
+                                                    Vehicles driven by our employees at owners risk. In the event of non-payment of the said total charge, the owner authorizes this company to repossess
+                                                    the vehicle or article and hold it until this total bill is paid. All warranty work must be done by this company who will accept no financial responsibility
+                                                    whatsoever if warranty work is done elsewhere. 90 days warranty covers malfunction in labor job.
+                                                    Authorized by:</small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                            </div>
+                        </div>
+                        <!-- end row -->
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="deleteEstimate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-small">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cancel estimate</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p>Are you sure that you want to cancel <strong>Estimate No. 0001</strong></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+
+
+            </div>
+            <!-- end main content-->
+
+{% endblock %}

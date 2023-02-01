@@ -1,0 +1,118 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+
+{% block content %}
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">{% trans "Pending stock report" %}</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="reports.html">{% trans "Reports" %}</a></li>
+                                            <li class="breadcrumb-item active">{% trans "Pending stock" %}</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+<!--                            <div class="d-flex flex-column flex-md-row justify-content-end align-items-center mb-3">-->
+
+
+
+<!--                                <div class="col-md-6 mb-3 d-flex align-items-center justify-content-end">-->
+<!--                                    <div class="span-container d-flex">-->
+<!--                                       <input type="date" name="fromdate" class="form-control" data-date-inline-picker="true">-->
+<!--                                       <input type="date" name="todate" class="form-control" data-date-inline-picker="true">-->
+<!--                                       <input type="submit" value="Search" class="btn btn-secondary">-->
+<!--                                       &lt;!&ndash;                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash;                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>&ndash;&gt;-->
+<!--                                 </div>-->
+
+<!--                            </div>-->
+
+
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row mt-3">
+                            <div class="col-12">
+
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                                        <thead>
+                                            <tr class="bg-transparent">
+
+                                                <th>{% trans "Code" %}</th>
+                                                <th>{% trans "Name" %}</th>
+                                                <th>{% trans "Price" %}</th>
+                                                <th>{% trans "Stock" %}</th>
+                                                <th>{% trans "Dealer" %}</th>
+                                                <th>{% trans "Invoice number" %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if parte %}
+                                        {% for part in parte %}
+
+                                            <tr>
+                                               <td>{{part.codigo}}</td>
+                                               <td>{{part.descripcion}}</td>
+                                               <td>${{ part.unit_price }}</td>
+                                               <td><a href="#" class="stock-quantity" data-type="text" data-pk="1">{{ part.quantity }}</a></td>
+                                               <td>{{ part.dealer }}</td>
+                                               <td>{{ part.invoiceNumber }}</td>
+                                            </tr>
+
+                                        {% endfor  %}
+                                        {% endif  %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+{% endblock %}

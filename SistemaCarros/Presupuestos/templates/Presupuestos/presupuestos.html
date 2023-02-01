@@ -1,0 +1,240 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load mathfilters %}
+
+
+{% block content %}
+            
+
+             <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Estimates</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Estimates</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="{% url 'Presupuestos:step1' %}"><button type="button" class="btn btn-success mb-3 waves-effect waves-light" onclick="addNewVehicle()">Add new</button></a>
+
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;" id="datatable">
+                                        <thead>
+                                            <tr class="bg-transparent">
+                                                <th style="width: 24px;">
+                                                    <div class="form-check text-center font-size-16">
+                                                        <input type="checkbox" class="form-check-input" id="invoicecheck">
+                                                        <label class="form-check-label" for="invoicecheck"></label>
+                                                    </div>
+                                                </th>
+                                                <th>Estimate ID</th>
+                                                <th>Date</th>
+                                                <th>Billing Name</th>
+                                                <th>Pending</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Download PDF</th>
+                                                <th>Add parts</th>
+                                                <th>Add labor</th>
+                                                <th>Add payment</th>
+                                                <th style="width: 120px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for presupuesto in presupuestos %}
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check text-center font-size-16">
+                                                        <input type="checkbox" class="form-check-input" id="invoicecheck1">
+                                                        <label class="form-check-label" for="invoicecheck1"></label>
+                                                    </div>
+                                                </td>
+
+                                                <td><a href="javascript: void(0);" class="text-dark fw-bold">#MN{{ presupuesto.id  }}</a> </td>
+                                                <td>
+                                                    {{presupuesto.register_time.date}}
+                                                </td>
+                                                <td>
+                                                    {{presupuesto.cliente.nombre}}
+                                                </td>
+                                                <td>
+                                                    ${{presupuesto.total_parte|addition:presupuesto.total_manaobra|sub:presupuesto.total_paid|floatformat:2}}
+                                                </td>
+
+                                                <td>
+                                                    ${{ presupuesto.total_parte|addition:presupuesto.total_manaobra|floatformat:2 }}
+                                                </td>
+
+                                                <td>
+                                                    {% if presupuesto.status == "PENDING" %}
+                                                        <div class="badge bg-soft-warning font-size-12">Pending</div>
+                                                    {% elif presupuesto.status == "CANCELED" %}
+                                                        <div class="badge bg-soft-danger font-size-12">Canceled</div>
+                                                    {% else %}
+                                                        <div class="badge bg-soft-primary font-size-12">Paid</div>
+                                                    {% endif %}
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <a href="{% url 'Presupuestos:download-estimate' presupuesto.id %}" class="btn btn-light btn-sm w-xs">PDF <i class="uil uil-download-alt ms-2"></i></a>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{% url 'Presupuestos:add-part' presupuesto.id %}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'Presupuestos:add-labor' presupuesto.id %}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'Presupuestos:add-pay' presupuesto.id %}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{% url 'Presupuestos:detail' presupuesto.id %}"><i class="uil uil-search font-size-18"></i></a>
+
+                                                    <a data-bs-toggle="modal" data-bs-target="#deleteEstimate" data-id="{{ presupuesto.id }}" onclick="showCancelEstimateModal(this)" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="deleteEstimate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-small">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cancel estimate</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p>Are you sure that you want to cancel <strong id="modal-estimate-id">Estimate No. 0001</strong></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="modal-estimate-cancel" onclick="cancelEstimate(this)">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+
+
+
+
+            </div>
+            <!-- end main content-->
+
+
+        </div>
+        <!-- END layout-wrapper -->
+{% endblock %}
+
+<!--       -->
+<!--        &lt;!&ndash; JAVASCRIPT &ndash;&gt;-->
+<!--        <script src="assets/libs/jquery/jquery.min.js"></script>-->
+<!--        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!--        <script src="assets/libs/metismenu/metisMenu.min.js"></script>-->
+<!--        <script src="assets/libs/simplebar/simplebar.min.js"></script>-->
+<!--        <script src="assets/libs/node-waves/waves.min.js"></script>-->
+<!--        <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>-->
+<!--        <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>-->
+
+<!--        &lt;!&ndash; apexcharts &ndash;&gt;-->
+<!--        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>-->
+
+<!--        <script src="assets/js/pages/dashboard.init.js"></script>-->
+
+<!--        &lt;!&ndash; Required datatable js &ndash;&gt;-->
+<!--        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>-->
+<!--        <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>-->
+<!--        -->
+<!--        &lt;!&ndash; Responsive examples &ndash;&gt;-->
+<!--        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>-->
+<!--        <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>-->
+
+<!--        &lt;!&ndash; init js &ndash;&gt;-->
+<!--        <script src="assets/js/pages/ecommerce-datatables.init.js"></script>-->
+
+<!--        &lt;!&ndash; App js &ndash;&gt;-->
+<!--        <script src="assets/js/app.js"></script>-->
+
+<!--        <script>-->
+<!--            function addNewPart(){-->
+<!--                location.href = "part-add.html"; -->
+<!--            }-->
+<!--        </script>-->
+
+
+<!--        &lt;!&ndash; DATE RANGE PICKER &ndash;&gt;-->
+<!--        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>-->
+<!--        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>-->
+<!--        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />-->
+<!--        <script>-->
+<!--            $(function() {-->
+<!--            $('input[name="daterange"]').daterangepicker({-->
+<!--                opens: 'left'-->
+<!--            }, function(start, end, label) {-->
+<!--                console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));-->
+<!--            });-->
+<!--            });-->
+<!--        </script>-->
+
+
+<!--    </body>-->
+
+<!--</html>-->

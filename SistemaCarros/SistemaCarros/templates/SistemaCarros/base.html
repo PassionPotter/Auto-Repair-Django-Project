@@ -1,0 +1,553 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap Css -->
+
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- DataTables -->
+        <link href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Responsive datatable examples -->
+        <link href="{% static 'assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <!-- Custom Css-->
+        <link href="{% static 'assets/css/custom.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="https://releases.transloadit.com/uppy/v1.30.0/uppy.min.css" rel="stylesheet">
+
+        <style>
+            #DataTables_Table_0_filter,
+            #DataTables_Table_1_filter,
+            #DataTables_Table_2_filter,
+            #DataTables_Table_0_info,
+            #DataTables_Table_1_info,
+            #DataTables_Table_2_info,
+            #DataTables_Table_0_paginate,
+            #DataTables_Table_1_paginate,
+            #DataTables_Table_2_paginate,
+            .dataTables_length{
+                display: none;
+            }
+        </style>
+        <style>
+            #DataTables_Table_0_filter,
+            #DataTables_Table_1_filter,
+            #DataTables_Table_2_filter,
+
+
+            {
+                display: none;
+            }
+        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+        <link href="https://transloadit.edgly.net/releases/uppy/v1.6.0/uppy.min.css" rel="stylesheet">
+
+
+    </head>
+
+
+    <body>
+
+    <!-- <body data-layout="horizontal" data-topbar="colored"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="{% url 'dashboard:dashboard' %}" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="{%static 'assets/svg/mechanix-boss-pos-logo-sm.svg' %}" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{%static 'assets/svg/mechanix-boss-pos-logo.svg' %}" alt="" height="20">
+                                </span>
+
+                            </a>
+
+                            <a href="{% url 'dashboard:dashboard' %}" class="logo logo-light">
+                                <!-- <span class="logo-sm">
+                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/logo-dark.png" alt="" height="20">
+                                </span> -->
+                                <strong>LOGO</strong>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="dropdown d-inline-block d-lg-none ms-2">
+                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="uil-search"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                aria-labelledby="page-header-search-dropdown">
+
+                                <form class="p-3" method="GET" action="{% url 'search' %}">
+                                    {% csrf_token %}
+                                    <div class="m-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="searched" placeholder="Search Customers" aria-label="Recipient's username">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-none d-lg-inline-block ms-1">
+                            <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
+                                <i class="uil-minus-path"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="rounded-circle header-profile-user" src="{%static 'assets/images/users/avatar-6.jpg' %}"
+                                    alt="Header Avatar">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">{{user.username}}</span>
+                                <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                {% if user.is_authenticated  %}
+                                <a class="dropdown-item" href="{% url 'profile' %}"><i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">View Profile</span></a>
+                                <a class="dropdown-item" href="{% url 'logout' %}"><i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></a>
+                                {% else  %}
+                                <a class="dropdown-item" href="{% url 'login' %}"><i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Login</span></a>
+                                {% endif  %}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </header>
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="{% url 'dashboard:dashboard' %}" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="{%static 'assets/svg/mechanix-boss-pos-logo-sm.svg' %}" alt="" height="50">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="{%static 'assets/svg/mechanix-boss-pos-logo.svg' %}" alt="" height="75">
+                                </span>
+                            </a>
+                        </div>
+
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+
+                <div data-simplebar class="sidebar-menu-scroll">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title">Menu</li>
+
+                            <li>
+                                <a href="{% url 'dashboard:dashboard' %}" class="waves-effect">
+                                    <i class="uil-home-alt"></i><span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'InformacionTiendas:list_tiendas' %}" class="waves-effect">
+                                    <i class="uil-tachometer-fast"></i><span>Workshops</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'Clientes:clientes_list' %}" class="waves-effect">
+                                    <i class="uil-user-square"></i><span>Customers</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'carros:list_cars' %}" class="waves-effect">
+                                    <i class="uil-car-sideview"></i><span>Vehicles</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'parte:list_parte' %}" class="waves-effect">
+                                    <i class="uil-cube"></i><span>Inventory</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'Presupuestos:presupuestos' %}" class="waves-effect">
+                                    <i class="uil-clipboard-alt"></i><span>Estimates</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="{% url 'invoices:list' %}"  class="waves-effect">
+                                    <i class="uil-document-layout-left"></i><span>Invoices</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'ReporteGanancias:reporteganancias' %}" class="waves-effect">
+                                    <i class="uil-graph-bar"></i><span>Reports</span>
+                                </a>
+                            </li>
+                             <li>
+                                <a href="{% url 'tecnicos:list_tecnicos' %}" class="waves-effect">
+                                    <i class="uil-users-alt "></i><span>Technicians</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+
+                <!-- Page-content -->
+                {% block content %}
+
+                {% endblock %}
+
+                <!-- End Page-content -->
+
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            <!-- end main content-->
+
+<!-- Modal -->
+<!-- The Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <!-- <h5 class="modal-title" id="exampleModalLabel"></h5> -->
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <!--<div class="table-responsive">-->
+                            <div class="row">
+                                <div class="col-lg-12" >
+                                    <!-- Swiper -->
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper image-content">
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- end row -->
+                          <!--</div>-->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+
+        </div>
+        <!-- END layout-wrapper -->
+
+
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+        <script src="{% static 'assets/libs/waypoints/lib/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'assets/libs/jquery.counterup/jquery.counterup.min.js' %}"></script>
+        <!-- App js -->
+        <script src="{% static 'assets/js/app.js' %}"></script>
+        <!-- Add parts and rows js -->
+        <script src="{% static 'assets/js/add-parts-rows.js' %}"></script>
+
+        <!-- Calculos js -->
+        <script src="{% static 'assets/js/calculos.js' %}"></script>
+
+        <!-- apexcharts -->
+        <script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+        <script src="{% static 'assets/js/pages/dashboard.init.js' %}"></script>
+        <script src="{% static 'assets/js/log-in-remember-me.js' %}"></script>
+        <!-- parsleyjs -->
+        <script src="{% static 'assets/libs/parsleyjs/parsley.min.js' %}"></script>
+        <script src="{% static 'assets/js/pages/form-validation.init.js' %}"></script>
+        <!-- Multiple image uploader js -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{% static 'js/multiple-image-uploader.js' %}"></script>
+
+        <!--modal-->
+        <script>
+            $('#myModal').on('shown.bs.modal', function () {
+             $('#myInput').trigger('focus')
+            })
+        </script>
+
+
+
+        <!-- Autocomplete -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+        <script>
+            $(document).ready(function() {
+
+            // Data for autocomplete
+            var buah = [
+                { value: 'Anggur Malmsteen', data: 'Anggur Malmsteen' },
+                { value: 'Hervey Rhodes', data: 'Hervey Rhodes' },
+                { value: 'Derek Cirpe', data: 'Derek Cirpe ' },
+                { value: 'Dan Iowee', data: 'Dan Iowee' },
+                { value: 'Melon Tree', data: 'Melon Tree' },
+                { value: 'John Travis', data: 'John Travis' },
+                { value: 'Nan Stewart', data: 'Nan Stewart' },
+                { value: 'Seman Richardson', data: 'Seman Richardson' },
+                { value: 'Durian Wilson', data: 'Durian Wilson' },
+                { value: 'Berth Fergusson', data: 'Berth Fergusson' },
+                { value: 'Alee Jhonson', data: 'Alee Jhonson' },
+                { value: 'Donald Stevenson', data: 'Donald Stevenson' },
+                { value: 'Tony Blair', data: 'Tony Blair' },
+                { value: 'Sam Ocaña', data: 'Sam Ocaña' },
+                { value: 'Marty O Gomez', data: 'Marty O Gomez' },
+                { value: 'Paty Barba', data: 'Paty Barba' },
+                { value: 'Kleng Hetfield', data: 'Kleng Hetfield' },
+                { value: 'Paul Ramsey', data: 'Paul Ramsey' }
+            ];
+
+            // Selector input yang akan menampilkan autocomplete.
+            $( "#buah" ).autocomplete({
+                lookup: buah
+            });
+            })
+        </script>
+
+        <!-- Multiple image uploader js -->
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <!-- jquery step -->
+        <script src="{% static 'assets/libs/jquery-steps/build/jquery.steps.min.js' %}"></script>
+        <!-- form wizard init -->
+        <script src="{% static 'assets/js/pages/form-wizard.init.js' %}"></script>
+        <!-- delete rows -->
+        <script src="{% static 'assets/js/delete-rows.js' %}"></script>
+        <!-- delete rows -->
+        <script src="{% static 'assets/js/language.js' %}"></script>
+            <!-- Gallery js -->
+        <script src="{% static 'assets/js/gallery-images.js' %}"></script>
+   <!-- Autocomplete -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        // Data for autocomplete
+        var dealerlist = [
+            { value: 'Anggur Malmsteen', data: 'Anggur Malmsteen' },
+            { value: 'Hervey Rhodes', data: 'Hervey Rhodes' },
+            { value: 'Derek Cirpe', data: 'Derek Cirpe ' },
+            { value: 'Dan Iowee', data: 'Dan Iowee' },
+            { value: 'Melon Tree', data: 'Melon Tree' },
+            { value: 'John Travis', data: 'John Travis' },
+            { value: 'Nan Stewart', data: 'Nan Stewart' },
+            { value: 'Seman Richardson', data: 'Seman Richardson' },
+            { value: 'Durian Wilson', data: 'Durian Wilson' },
+            { value: 'Berth Fergusson', data: 'Berth Fergusson' },
+            { value: 'Alee Jhonson', data: 'Alee Jhonson' },
+            { value: 'Donald Stevenson', data: 'Donald Stevenson' },
+            { value: 'Tony Blair', data: 'Tony Blair' },
+            { value: 'Sam Ocaña', data: 'Sam Ocaña' },
+            { value: 'Marty O Gomez', data: 'Marty O Gomez' },
+            { value: 'Paty Barba', data: 'Paty Barba' },
+            { value: 'Kleng Hetfield', data: 'Kleng Hetfield' },
+            { value: 'Paul Ramsey', data: 'Paul Ramsey' }
+        ];
+
+        $( "#dealer-list" ).autocomplete({
+            lookup: dealerlist
+        });
+
+        // Data for autocomplete
+        var codelist = [
+            { value: 'SA9F8', data: 'SA9F8' },
+            { value: 'FD90J', data: 'FD90J' },
+            { value: 'S0D89DHFS', data: 'S0D89DHFS' },
+            { value: '09SD8HF0HS', data: '09SD8HF0HS' },
+            { value: 'D8HN89', data: 'D8HN89' },
+            { value: '12345avis', data: '12345avis' }
+        ];
+
+        $( "#code-list" ).autocomplete({
+            lookup: codelist
+        });
+
+        // Data for autocomplete
+        var descriptionlist = [
+            { value: 'Part name 1', data: 'Part name 1' },
+            { value: 'Part name 2', data: 'Part name 2' },
+            { value: 'Part name 3', data: 'Part name 3' },
+            { value: 'Part name 4', data: 'Part name 4' },
+            { value: 'Part name 5', data: 'Part name 5' },
+            { value: 'Part name 6', data: 'Part name 6' }
+        ];
+
+        $( "#description-list" ).autocomplete({
+            lookup: descriptionlist
+        });
+    })
+    </script>
+
+        <!-- DATE RANGE PICKER -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <script>
+
+        $(function() {
+          $('input[name="daterange"]').daterangepicker({
+            opens: 'left'
+          }, function(start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+          });
+        });
+
+        </script>
+            <!-- Required datatable js -->
+        <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+        <!-- Responsive examples -->
+        <script src="{% static 'assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+
+        <!-- init js -->
+        <script src="{% static 'assets/js/pages/ecommerce-datatables.init.js' %}"></script>
+
+
+
+        <script>
+            function addNewPart(){
+                location.href = "inventory-add.html";
+            }
+        </script>
+        <script>
+
+                $(document).ready( function () {
+                    $('#datatable').DataTable();
+                } );
+
+        </script>
+
+        <!-- SHOW FORM OPTIONS -->
+
+         <script>
+
+            var $onlyperson = $(".only-person");
+            var $onlycorp = $(".only-corp");
+            var $both = $(".both");
+
+            function showForm(elemento) {
+              $("#show-form").css("display", "block");
+
+              console.log("lala");
+              var radVal = $(elemento).val();
+              console.log(radVal);
+              if (radVal == 'person') {
+                $onlyperson.addClass('show-item').removeClass('hide-item');
+                $onlycorp.addClass('hide-item').removeClass('show-item');
+                $both.addClass('show-item');
+              } else if (radVal == 'corporative') {
+                $onlyperson.addClass('hide-item').removeClass('show-item');
+                $onlycorp.addClass('show-item').removeClass('hide-item');
+                $both.addClass('show-item');
+              }
+            };
+
+
+
+        </script>
+    <!-- Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://releases.transloadit.com/uppy/v1.30.0/uppy.min.js"></script>
+
+<script>
+
+</script>
+
+{% block script %}
+{% endblock %}
+
+{##}
+{% if messages %}
+  {% for m in messages %}
+       <script>
+           Swal.fire({
+                "title":"Congratulations",
+                "text":"{{m}}",
+                "icon":"success"
+           })
+       </script>
+   {% endfor %}
+{% endif %}
+
+    </body>
+ 
+</html>

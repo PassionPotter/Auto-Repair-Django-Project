@@ -1,0 +1,356 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+
+           <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Add new vehicle</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">The Shop</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'carros:list_cars' %}">Vehicles</a></li>
+                                            <li class="breadcrumb-item active">Add</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-3">Vehicle information</h4>
+                                        <br>
+                                        <div class="tab-content p-3 text-muted">
+                                            <div class="tab-pane active" id="general" role="tabpanel">
+                                            <form enctype="multipart/form-data" method="post" id="car-create-form">
+                                                {% csrf_token %}
+                                               <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label>License plate</label>
+                                                        <br>
+                                                        <div>
+                                                          {{ form.placas }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label>Type</label>
+                                                        {{ form.tipo }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 only-person">
+                                                    <div class="mb-3">
+                                                        <label>Make</label>
+                                                        {{ form.marca }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4 only-person">
+                                                    <div class="mb-3">
+                                                        <label>Model</label>
+                                                        {{ form.modelo }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide the first name.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 only-person">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Year</label>
+                                                        {{ form.año }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide the last name.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">VIN</label>
+                                                        {{ form.vin }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Color</label>
+                                                        {{ form.color }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a fax number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Engine</label>
+                                                        {{ form.motor }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a fax number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Insurance agent</label>
+                                                        {{ form.agente_seguros }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide an e-mail.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Insurance company</label>
+                                                        {{ form.compañia_seguros }}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a website.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label>Policy No.</label>
+                                                        {{ form.no_politica }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label>Cliente</label>
+                                                        {{ form.cliente }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                    <br>
+                                                    <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                 <h4 class="card-title mb-3">Vehicle Picture</h4>
+                                                            </div>
+                                                    </div>
+                                                    <div id="drag_picture"></div>
+                                                    {{form.fotosCarro}}
+                                                    <br>
+                                                    <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                 <h4 class="card-title mb-3">Vehicle Warranty</h4>
+                                                            </div>
+                                                    </div>
+                                                    <div id="drag_warranty"></div>
+                                                    {{form.garantia}}
+                                                    <br>
+
+                                            <button class="btn btn-primary btn-block" type="submit" value="Post">Save</button>
+                                            </form>
+                                            </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+//Hide the form of fotosCarro and garantia
+$('#file-input').hide()
+$('#file-inputz').hide()
+var carros = {};
+var warranty = {};
+//Image Upload using Uppy.io
+    const uppy = new Uppy.Core({
+         id:'picture',
+         restrictions: {
+              maxFileSize: 10000000,        // at most 10 Mb per picture
+              maxTotalFileSize: 100000000,  // 100Mb = 10 x 10 Mb
+              maxNumberOfFiles: 10,         // at most 10 pictures
+              allowedFileTypes: ['.jpg', '.jpeg', '.png'],
+          },
+         onBeforeUpload: (files) => {
+            // we’ll be careful to return a new object, not mutating the original `files`
+            const updatedFiles = {}
+            Object.keys(files).forEach(fileID => {
+                updatedFiles[fileID] = {
+                    ...files[fileID],
+                    meta: {
+                        ...files[fileID].meta,
+                        name: 'car_' + files[fileID].meta.name, // modify filename
+                    },
+                }
+            })
+            return updatedFiles
+        },
+    });
+    const Dashboard = Uppy.Dashboard;
+    const Form = Uppy.Form;
+    const XHRUpload = Uppy.XHRUpload;
+
+    uppy.use(Dashboard, {
+         metaFields: [
+            { id: 'name', name: 'Name', placeholder: 'file name' },
+            {
+              id: 'default',
+              name: 'Default',
+              render ({ value, onChange, required, form }, h) {
+                return h('input', { type: 'checkbox', required, form, onChange: (ev) => onChange(ev.target.checked ? 'on' : ''), defaultChecked: value === 'on' })
+              },
+            },
+        ],
+        showRemoveButtonAfterComplete: false,
+        inline: true,
+        target: '#drag_picture',
+        showProgressDetails: true,
+        width: 1200,
+        height: 350,
+        proudlyDisplayPoweredByUppy:false,
+        locale:{
+              strings: {
+                          browseFiles: 'Upload Car Pictures',
+                          dropPasteFiles: '%{browseFiles}',
+                          editFile: 'Select image as main view',
+                          saveChanges: 'OK',
+                          editing: 'Select %{file} as main view'
+                      }
+                },
+        })
+        .use(XHRUpload, {
+            endpoint: '{% url "carros:create_carros_picture" %}',
+            formData: true,
+            fieldName:"files",
+        })
+        .use(Form, {
+            target: '#filesupload',
+            getMetaFromForm: true,
+            addResultToForm: true,
+            multipleResults: true,
+            submitOnSuccess: true,
+            triggerUploadOnSubmit: true
+        });
+
+        uppy.on('dashboard:file-edit-complete', (currentFile) => {
+            if(currentFile && currentFile.meta.default === 'on') {
+                uppy.getFiles().forEach(file=> {
+                    if(file.id !== currentFile.id) {
+                         uppy.setFileMeta(file.id, { default: "" });
+                    }
+                })
+            }
+        });
+
+        uppy.on('complete', (result) => {
+            console.log('Upload complete! We’ve uploaded these files:', result.successful);
+            for(let i=0; i<result.successful.length; i++){
+                item = result.successful[i].response.body;
+                for (key in item){
+                    carros[key] = [item[key],result.successful[i].meta.default];
+                }
+            }
+            $('#file-input').val(JSON.stringify(carros));
+        })
+
+    const uppy2 = new Uppy.Core({
+         id:'warranty',
+         restrictions: {
+              maxFileSize: 10000000,        // at most 10 Mb per picture
+              maxTotalFileSize: 100000000,  // 100Mb = 10 x 10 Mb
+              maxNumberOfFiles: 10,         // at most 10 pictures
+              allowedFileTypes: ['.jpg', '.jpeg', '.png', '.pdf'],
+          },
+         onBeforeUpload: (files) => {
+            // we’ll be careful to return a new object, not mutating the original `files`
+            const updatedFiles = {}
+            Object.keys(files).forEach(fileID => {
+                updatedFiles[fileID] = {
+                    ...files[fileID],
+                    meta: {
+                        ...files[fileID].meta,
+                        name: 'warranty_' + files[fileID].meta.name, // modify filename
+                    },
+                }
+            })
+            return updatedFiles
+        },
+    });
+
+    uppy2.use(Dashboard, {
+        showRemoveButtonAfterComplete: false,
+        inline: true,
+        target: '#drag_warranty',
+        showProgressDetails: true,
+        width: 1200,
+        height: 350,
+        proudlyDisplayPoweredByUppy:false,
+        locale:{
+              strings: {
+                          browseFiles: 'Upload Warranty Pictures',
+                          dropPasteFiles: '%{browseFiles}',
+                      }
+                },
+        })
+        .use(XHRUpload, {
+            endpoint: '{% url "carros:create_carros_warranty" %}',
+            formData: true,
+            fieldName:"files",
+        })
+        .use(Form, {
+            target: '#filesupload',
+            getMetaFromForm: true,
+            addResultToForm: true,
+            multipleResults: true,
+            submitOnSuccess: true,
+            triggerUploadOnSubmit: true
+        });
+
+        uppy2.on('complete', (result) => {
+            console.log('Upload complete! We’ve uploaded these files:', result.successful);
+            for(let i=0; i<result.successful.length; i++){
+                item = result.successful[i].response.body;
+                for (key in item){
+                    warranty[key] = item[key];
+                }
+            }
+            $('#file-inputz').val(JSON.stringify(warranty));
+        })
+
+
+</script>
+{% endblock %}

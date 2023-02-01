@@ -1,0 +1,181 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load mathfilters %}
+
+{% block content %}
+
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Debtors report</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="reports.html">Reports</a></li>
+                                            <li class="breadcrumb-item active">Debtors</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column flex-md-row justify-content-end align-items-center mb-3">
+
+
+
+                                <div class="d-flex justify-content-end align-items-center col-12 col-md-4">
+                                    <div class="text-right">
+                                        <label class="m-0">Date range:&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <form method="post">
+                                        <div class="span-container d-flex">
+
+                                                {% csrf_token %}
+                                                <input type="date" value={{ fromdate }} name="fromdate" class="form-control" data-date-inline-picker="true">
+                                                <input type="date" value={{ todate }} name="todate" class="form-control" data-date-inline-picker="true">
+                                                <input type="submit" value="Search" class="btn btn-secondary">
+
+
+                           <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row mt-3">
+                            <div class="col-lg-12">
+
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-centered datatable dt-responsive nowrap table-card-list" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                                        <thead>
+                                            <tr class="bg-transparent">
+
+                                                <th>Estimate ID</th>
+                                                <th>Date</th>
+                                                <th>Billing Name</th>
+                                                <th>Pending</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Download PDF</th>
+                                                <th>Add parts</th>
+                                                <th>Add labor</th>
+                                                <th>Add payment</th>
+                                                <th style="width: 120px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {% for presupuesto in presupuestos %}
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check text-center font-size-16">
+                                                        <input type="checkbox" class="form-check-input" id="invoicecheck1">
+                                                        <label class="form-check-label" for="invoicecheck1"></label>
+                                                        <a href="javascript: void(0);" class="text-dark fw-bold">#MN{{ presupuesto.id  }}</a>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {{presupuesto.register_time.date}}
+                                                </td>
+                                                <td>
+                                                    {{presupuesto.cliente.nombre}}
+                                                </td>
+                                                <td>
+                                                    ${{presupuesto.total_parte|addition:presupuesto.total_manaobra|sub:presupuesto.total_paid|floatformat:2}}
+                                                </td>
+
+                                                <td>
+                                                    ${{ presupuesto.total_parte|addition:presupuesto.total_manaobra|floatformat:2 }}
+                                                </td>
+
+                                                <td>
+                                                    {% if presupuesto.status == "PENDING" %}
+                                                        <span class="badge bg-soft-warning font-size-12">Pending</span>
+                                                    {% elif presupuesto.status == "CANCELED" %}
+                                                        <span class="badge bg-soft-danger font-size-12">Canceled</span>
+                                                    {% else %}
+                                                        <span class="badge bg-soft-success font-size-12">Paid</span>
+                                                    {% endif %}
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <a href="{% url 'Presupuestos:download-estimate' presupuesto.id %}" class="btn btn-light btn-sm w-xs">PDF <i class="uil uil-download-alt ms-2"></i></a>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{% url 'ReporteGanancias:add-part' presupuesto.id %}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'ReporteGanancias:add-labor' presupuesto.id %}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'ReporteGanancias:add-pay' presupuesto.id %}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{% url 'Presupuestos:detail' presupuesto.id %}"><i class="uil uil-search font-size-18"></i></a>
+
+                                                    <a href="{% url 'ReporteGanancias:send-email' presupuesto.id %}"><i class="uil uil-mailbox-alt font-size-18"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+            <!-- end main content-->
+
+{% endblock %}

@@ -1,0 +1,878 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Start ri   ght Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">New Estimate</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">The Shop</a></li>
+                                            <li class="breadcrumb-item active">New estimate</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Adding new estimate...</h4>
+
+                                        <div id="vertical-example" class="vertical-wizard">
+                                            <!-- Seller Details -->
+                                            <h3>Customer Details</h3>
+                                            <section>
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-12 mb-3">
+                                                            <h4 class="card-title">Customer information</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-firstname-input">Title</label>
+                                                                <select class="form-select">
+                                                                    <option>Select</option>
+                                                                    <option>Mrs.</option>
+                                                                    <option>Miss</option>
+                                                                    <option>Mr.</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-firstname-input">First name</label>
+<!--                                                             <input type="text" class="form-control" id="verticalnav-firstname-input">-->
+                                                                {{presupuestosclientesform.nombre}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-lastname-input">Last name</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-lastname-input">-->
+                                                                    {{presupuestosclientesform.apellido}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-email-input">Email</label>
+<!--                                                                <input type="email" class="form-control" id="verticalnav-email-input">-->
+                                                                {{presupuestosclientesform.correo}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-phoneno-input">Phone</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-phoneno-input">-->
+                                                                {{presupuestosclientesform.telefono}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-phoneno-input">Phone 2</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-phoneno-input">-->
+                                                                {{presupuestosclientesform.tel}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    
+                                                </form>
+                                            </section>
+
+                                            <!-- Vehicle  -->
+                                            <h3>Vehicle </h3>
+                                            <section>
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-12 mb-3">
+                                                            <h4 class="card-title">Vehicle information</h4>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-pancard-input">License plate</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-pancard-input">-->
+                                                                {{presupuestosvehiculosform.placas}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-cstno-input">Year</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-cstno-input">-->
+                                                                {{presupuestosvehiculosform.año}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-vatno-input">Make</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-vatno-input">-->
+                                                                    {{presupuestosvehiculosform.marca}}
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-vatno-input">Model</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-vatno-input">-->
+                                                                {{presupuestosvehiculosform.modelo}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-servicetax-input">Type</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-servicetax-input">-->
+                                                                    {{presupuestosvehiculosform.tipo}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-companyuin-input">Engine</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-companyuin-input">-->
+                                                                {{presupuestosvehiculosform.motor}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-companyuin-input">VIN</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-companyuin-input">-->
+                                                                {{presupuestosvehiculosform.vin}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label for="verticalnav-companyuin-input">Color</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-companyuin-input">-->
+                                                                {{presupuestosvehiculosform.color}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </section>
+
+                                            <!-- Parts -->
+                                            <h3>Parts</h3>
+                                            <section id="section-form">
+                                                <div>
+                                                    <form method="POST" id="part-form-container calx_form">
+                                                        {% csrf_token %}
+                                                        <input type="button" class="btn btn-block btn-default btn-success mb-4 add-new-form" onclick="addForm()" value="+ Add part" />
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <div class="row mb-3">
+                                                                            <div class="col-md-12">
+                                                                                <div class="mb-3">
+                                                                                    <label for="verticalnav-email-input">Summary</label>
+                                                                                        {{presupuestosparteform.resumen}}
+<!--                                                                                    <textarea name="" id="verticalnav-email-input" class="form-control"></textarea>-->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <h4 class="card-title">Parts list</h4>
+                                                                        <p class="card-title-desc">Add the parts that you need to include.</p>
+                                        
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered table-nowrap align-middle" id="childTable1">
+                                                                                <thead class="table-info">
+                                                                                  <tr>
+                                                                                    <th scope="col">Code</th>
+                                                                                    <th scope="col">Description</th>
+                                                                                    <th scope="col">Quantity</th>
+                                                                                    <th scope="col">Unit Price</th>
+                                                                                    <th scope="col">Discount</th>
+                                                                                    <th scope="col">Total Price</th>
+                                                                                    <th scope="col">Tax - Free</th>
+                                                                                    <th scope="col">Brought by client</th>
+
+                                                                                  </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                {{ formset.management_form }}
+                                                                                {% for form in formset %}
+                                                                                <div class="part-form">
+                                                                                  <tr>
+                                                                                    <td>
+                                                                                        {{form.codigo}}
+<!--                                                                                        <input type="text" name="parts_code" class="form-control input-new-customer-sm" />-->
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.descripcion}}
+<!--                                                                                      <input type="text" name="parts_description" class="form-control  input-new-customer-description" />-->
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.quantity}}
+<!--                                                                                      <input type="text" name="parts_quantity" class="form-control input-new-customer-quantity" />-->
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.unit_price}}
+<!--                                                                                      <input type="text" name="parts_unit_price" class="form-control input-new-customer-unit-price" />-->
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.descuento_parte}}
+<!--                                                                                        <input type="text" name="parts_discount_per_part" class="form-control input-new-customer-total" />-->
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {{form.total_price}}
+<!--                                                                                      <input type="text" name="parts_total_price" class="form-control input-new-customer-total" />-->
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="form-check">
+                                                                                               {{form.tax_free}}
+<!--                                                                                            <input type="checkbox" class="form-check-input" id="formrow-customCheck">-->
+                                                                                            <label class="form-check-label" for="formrow-customCheck"></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="form-check">
+                                                                                                {{form.comprado_cliente}}
+<!--                                                                                            <input type="checkbox" class="form-check-input" id="formrow-customCheck2">-->
+                                                                                            <label class="form-check-label" for="formrow-customCheck2"></label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                  </tr>
+                                                                                </div>
+                                                                                {% endfor %}
+
+                                                                                </tbody>
+
+                                                                              </table>
+
+                                                                            <div class="part-form table-responsive" id="empty-row">
+                                                                                    <table class="table table-bordered table-nowrap align-middle">
+                                                                                        <tr>
+                                                                                            <td>{{formset.empty_form.codigo}}</td>
+                                                                                            <td>{{formset.empty_form.descripcion}}</td>
+                                                                                            <td>{{formset.empty_form.quantity}}</td>
+                                                                                            <td>{{formset.empty_form.unit_price}}</td>
+                                                                                            <td>{{formset.empty_form.descuento_parte}}</td>
+                                                                                            <td>{{formset.empty_form.total_price}}</td>
+                                                                                            <td>{{formset.empty_form.tax_free}}</td>
+                                                                                            <td>{{formset.empty_form.comprado_cliente}}</td>
+                                                                                        </tr>
+
+
+                                                                                    </table>
+
+                                                                            </div>
+                                                                            
+                                                                        </div>
+                                                                        
+
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                             
+                                                            </div> <!-- end col -->
+
+                                                        </div> <!-- end row -->
+
+                                                        <div class="row justify-content-end">                                                            
+                                                            <div class="col-md-3">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="parts_discount">Discount</label>
+                                                                    <div class="mb-3">
+                                                                        <div class="form-check form-check-inline">
+                                                                                {{presupuestosparteform.descuento}}
+                                                                        </div>
+
+                                                                    </div>
+                                                                        <div>
+                                                                                {{presupuestosparteform.descuentoTotal}}
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-end">
+                                                            <div class="col-md-3">
+                                                                <div class="mb-3">
+                                                                    <label class="form-label" for="parts_total"><strong>TOTAL:</strong></label>
+                                                                        {{presupuestosparteform.total}}
+<!--                                                                    <input type="text" class="form-control" id="parts_total" placeholder="$0.00">-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                  </div>
+                                            </section>
+
+                                            <!-- Labor  -->
+                                            <h3>Labor </h3>
+                                            <section>
+                                                <form  method="post">
+                                                     {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Labors list</h4>
+                                                                    <p class="card-title-desc">Add labors you need to include.</p>
+
+                                                                    <input type="button" class="btn btn-block btn-success mb-4 add-new-forms" onclick="addForms()" value="+ Add labor" />
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered table-nowrap align-middle" id="childTable2">
+                                                                            <thead class="table-info">
+                                                                              <tr>
+                                                                                <th scope="col">Code</th>
+                                                                                <th scope="col">Description</th>
+                                                                                <th scope="col">Technician</th>
+                                                                                <th scope="col">Hours</th>
+                                                                                <th scope="col">Minutes</th>
+                                                                                <th scope="col">Rate</th>
+                                                                                <th scope="col">Total Rate</th>
+                                                                                <th scope="col">Tax - Free</th>
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            {{ manoObra_formset.management_form }}
+                                                                            {% for form in manoObra_formset %}
+                                                                            <div class="form-rows">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    {{form.codigo}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{form.descripcion}}
+<!--                                                                                  <input type="text" name="parts_description" class="form-control input-labor-description" />-->
+                                                                                </td>
+                                                                                <td>
+                                                                                        {{form.tecnico}}
+<!--                                                                                    <select class="form-select input-new-customer-md">-->
+<!--                                                                                        <option>Select</option>-->
+<!--                                                                                        <option>Operator 1</option>-->
+<!--                                                                                        <option>Operator 2</option>-->
+<!--                                                                                        <option>Operator 3</option>-->
+<!--                                                                                        <option>Operator 4</option>-->
+<!--                                                                                        <option>Operator 5</option>-->
+<!--                                                                                    </select>-->
+                                                                                </td>
+
+                                                                                <td>
+                                                                                      {{form.horas}}
+<!--                                                                                    <input type="text" name="parts_unit_price" class="form-control input-labor-hours" />-->
+                                                                                  </td>
+                                                                                <td>
+                                                                                       {{form.minutos}}
+<!--                                                                                    <input type="text" name="parts_unit_price" class="form-control input-labor-minutes" />-->
+                                                                                </td>
+                                                                                <td>
+                                                                                       {{form.tarifa}}
+<!--                                                                                    <input type="text" name="parts_unit_price" class="form-control input-new-customer-sm" />-->
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{form.tarifa_total}}
+<!--                                                                                    <input type="text" name="total_rate" class="form-control input-new-customer-sm" />-->
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="form-check">
+                                                                                        {{form.libre_impuestos}}
+                                                                                        <label class="form-check-label" for="formrow-customCheck"></label>
+                                                                                    </div>
+                                                                                </td>
+                                                                              </tr>
+                                                                            </div>
+                                                                            {% endfor %}
+                                                                            </tbody>
+                                                                          </table>
+                                                                        <div class="form-rows table-responsive" id="empty-rows">
+                                                                                    <table class="table table-bordered table-nowrap align-middle">
+                                                                                        <tr>
+                                                                                            <td>{{manoObra_formset.empty_form.codigo}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.descripcion}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.tecnico}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.horas}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.minutos}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.tarifa}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.tarifa_total}}</td>
+                                                                                            <td>{{manoObra_formset.empty_form.libre_impuestos}}</td>
+                                                                                        </tr>
+
+                                                                                    </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row justify-content-end">
+                                                        <div class="col-md-3">
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="parts_discount">Discounts</label>
+                                                                <div class="mb-3">
+                                                                    {{presupuestosmanoobraform.descuento}}
+                                                                </div>
+                                                                <div>
+                                                                    {{presupuestosmanoobraform.numeroDescuento}}
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-end">
+                                                        <div class="col-md-3">
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="parts_total"><strong>TOTAL:</strong></label>
+                                                                {{presupuestosmanoobraform.total}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </section>
+
+
+                                            <!-- Pictures  -->
+                                            <h3>Pictures </h3>
+                                            <section>
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Picture list</h4>
+
+
+                                                                    <fieldset class="form-group">
+                                                                        <form method="POST" enctype="multipart/form-data" action="">
+                                                                                {% csrf_token %}
+
+                                                                                 {{ presupuestosfotosform.imagenes }}
+<!--                                                                                 <a href="javascript:void(0)" onclick="$('#pro-image').click()" class="btn btn-outline-success mb-3">-->
+<!--                                                                                      <i class="uil-cloud-upload"></i> Upload Images</a>-->
+<!--                                                                              <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>-->
+                                                                        </form>
+                                                                    </fieldset>
+                                                                    <div class="preview-images-zone"></div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </section>
+
+                                            <!-- Payments  -->
+                                            <h3>Payments </h3>
+                                            <section>
+                                                <form method="post">
+                                                     {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Payments list</h4>
+                                                                    <!-- <p class="card-title-desc">Add labors you need to include.</p> -->
+                                                                    <input type="button" class="btn btn-block btn-success mb-4 add-new-formz"  onclick="addFormz()" value="+ Add pay" />
+
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered table-nowrap align-middle" id="childTable3">
+                                                                            <thead class="table-info">
+                                                                              <tr>
+                                                                                <th scope="col">Pay type</th>
+                                                                                <th scope="col">Transaction number</th>
+                                                                                <th scope="col">Amount paid</th>
+
+
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            {{ pagos_formset.management_form }}
+                                                                            {% for form in pagos_formset %}
+                                                                            <div class="form-rowz">
+                                                                              <tr>
+                                                                                <td>
+                                                                                    {{form.tipo_pago}}
+<!--                                                                                    <select class="form-select input-new-customer-sm">-->
+<!--                                                                                        <option>Select</option>-->
+<!--                                                                                        <option>Cash</option>-->
+<!--                                                                                        <option>Credit card</option>-->
+<!--                                                                                        <option>Debit card</option>-->
+<!--                                                                                        <option>Check</option>-->
+<!--                                                                                    </select>-->
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{form.numero_transaccion}}
+<!--                                                                                    <input type="text" name="transaction_number" class="form-control input-new-customer-md" />-->
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{form.cantidad_pagada}}
+<!--                                                                                    <input type="text" name="payments_amount" class="form-control input-new-customer-sm" />-->
+                                                                                </td>
+                                                                              </tr>
+                                                                            </div>
+                                                                            {% endfor %}
+
+                                                                            </tbody>
+                                                                          </table>
+                                                                            <div class="form-rowz table-responsive" id="empty-rowz">
+                                                                                <table class="table table-bordered table-nowrap align-middle">
+                                                                                    <tr>
+                                                                                        <td>{{pagos_formset.empty_form.tipo_pago}}</td>
+                                                                                        <td>{{pagos_formset.empty_form.numero_transaccion}}</td>
+                                                                                        <td>{{pagos_formset.empty_form.cantidad_pagada}}</td>
+                                                                                        <td></td>
+                                                                                        <td></td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </section>
+
+                                            <!-- Preview  -->
+                                            <h3>Preview </h3>
+                                            <section>
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <div class="estimatepreview">
+                                                                        <h4 class="card-title">Estimate preview</h4>
+                                                                        <div class="form-check">
+                                                                            <input onclick="changeLanguage()" class="form-check-input" type="checkbox" id="formCheck2">
+                                                                            <label class="form-check-label" for="formCheck2">
+                                                                                    Spanish Translation
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <hr>                                                                   
+
+
+                                                                    <div class="invoice-title">
+                                                                        <h4 data-en class="float-end font-size-16">Estimate #0001 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+                                                                        <h4 data-fr class="float-end font-size-16">Presupuesto #0001 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4>
+                                                                        
+                                                                        <div class="mb-4">
+                                                                            <strong>LOGO</strong>
+                                                                        </div>
+                                                                        <div class="text-muted">
+                                                                            <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> email@domain.com</p>
+                                                                            <p class="mb-1"><i class="uil uil-phone me-1"></i> 012-345-6789</p>
+                                                                        </div>
+                                                                    </div>
+                            
+                                                                    <hr class="my-4">
+                            
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4">
+                                                                            <div class="text-muted">
+                                                                                    <h5 data-en class="font-size-16 mb-3">Customer information:</h5>
+                                                                                    <h5 data-fr class="font-size-16 mb-3">Información del cliente:</h5>
+                                                                                        <h5 class="font-size-15 mb-2">Ana Patricia</h5>
+                                                                                        <p>License: <strong>564UC5</strong></p>
+                                                                                        <p class="mb-1">ana@gmail.com</p>
+                                                                                        <p>5644555</p>
+                                                                                        <p>4645454</p>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="text-muted">
+                                                                                <h5 data-en class="font-size-16 mb-3">Vehicle information:</h5>
+                                                                                <h5 data-fr class="font-size-16 mb-3">Información del Vehículo:</h5>
+                                                                                <h5 class="font-size-15 mb-2"><span data-en>License plate: 5BWT273</span></h5>
+                                                                                <h5 class="font-size-15 mb-2"><span data-fr>Placa: 5BWT273</span></h5>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <p data-en class="mb-1">Make: <strong>Susuki</strong></p>
+                                                                                        <p data-fr class="mb-1">Marca: <strong>Susuki</strong></p>
+                                                                                        <p data-en class="mb-1">Model: <strong>XL-7</strong></p>
+                                                                                        <p data-fr class="mb-1">Modelo: <strong>XL-7</strong></p>
+                                                                                        <p data-en class="mb-1">Color: <strong>Red</strong></p>
+                                                                                        <p data-fr class="mb-1">Color: <strong>Red</strong></p>
+                                                                                        <p data-en class="mb-1">Year: <strong>2018</strong></p>
+                                                                                        <p data-fr class="mb-1">Año: <strong>2018</strong></p>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <p data-en  class="mb-1">Type: <strong>Sedan</strong></p>
+                                                                                        <p data-fr  class="mb-1">Tipo: <strong>Sedan</strong></p>
+                                                                                        <p data-en  class="mb-1">VIN number: <strong>XDLKJFE090</strong></p>
+                                                                                        <p data-fr  class="mb-1">VIN Número: <strong>XDLKJFE090</strong></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="text-muted text-sm-end">
+                                                                                <div>
+                                                                                    <h5 data-en class="font-size-16 mb-1">Estimate Date:</h5>
+                                                                                    <h5 data-fr class="font-size-16 mb-1">Fecha Estimada:</h5>
+                                                                                    <p>09 Dec, 2021</p>
+                                                                                </div>
+                                                                                <div class="mt-4">
+                                                                                    <h5 data-en class="font-size-16 mb-3">Summary:</h5>
+                                                                                    <h5 data-fr class="font-size-16 mb-3">Resumen:</h5>
+                                                                                    <p class="mb-1">Remove / replace brake pads, front hub and spark plugs.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                            
+                                                                    <!-- Labor table -->
+                                                                    <div class="py-2 my-4">
+                                                                        <h5 data-en class="font-size-15">Labor summary</h5>
+                                                                        <h5 data-fr class="font-size-15">Resumen mano de obra</h5>
+                            
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-nowrap table-centered mb-0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th><p data-en>Description</p><p data-fr>Descripción</p></th>
+                                                                                        <th><p data-en>Labor rate</p><p data-fr>Tasa de trabajo</p></th>
+                                                                                        <th><p data-en>Hours:Min</p><p data-fr>Horas:Min</p></th>
+                                                                                        <th><p data-en>Disc.%</p><p data-fr>Desc.%</p></th>
+                                                                                        <th><p data-en>Total Disc.</p><p data-fr>Desc. Total</p></th>
+                                                                                        <th class="text-end" style="width: 120px;"><p data-en>Total</p><p data-fr>Total</p></th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Remove/Replace <br> spark plugs</td>
+                                                                                        <td>70.00</td>
+                                                                                        <td>1:18</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$91.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Remove/Replace <br> front hub</td>
+                                                                                        <td>70.00</td>
+                                                                                        <td>1:17</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$89.83</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>Remove/Replace <br> change oil & filter</td>
+                                                                                        <td>70.00</td>
+                                                                                        <td>0:17</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$19.83</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                                                                                        <td class="border-0 text-end"><h4 class="m-0">$200.66</h4></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                        
+                        
+                                                                    <!-- Parts table -->
+                                                                    <div class="py-2 my-4">
+                                                                        <h5 data-en class="font-size-15">Parts summary</h5>
+                                                                        <h5 data-fr class="font-size-15">Resumen Partes</h5>
+                            
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-nowrap table-centered mb-0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th><p data-en>Quantity</p><p data-fr>Cantidad</p></th>
+                                                                                        <th><p data-en>Description</p><p data-fr>Descripción</p></th>
+                                                                                        <th><p data-en>Price</p><p data-fr>Precio</p></th>
+                                                                                        <th><p data-en>Disc.%</p><p data-fr>Desc.%</p></th>
+                                                                                        <th><p data-en>Total Disc.</p><p data-fr>Desc. Total</p></th>
+                                                                                        <th class="text-end" style="width: 120px;"><p data-en>Total</p><p data-fr>Total</p></th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <th class="quantity-column">2</th>
+                                                                                        <td>Front hub</td>
+                                                                                        <td>77.62</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$155.24</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th class="quantity-column">1</th>
+                                                                                        <td>Brake pads</td>
+                                                                                        <td>38.37</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$38.37</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th class="quantity-column">6</th>
+                                                                                        <td>Sparks plugs</td>
+                                                                                        <td>5.48</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$32.88</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th class="quantity-column">4</th>
+                                                                                        <td>10W40 motor oil</td>
+                                                                                        <td>77.62</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td>0.00</td>
+                                                                                        <td class="text-end">$155.24</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                                                                                        <td class="border-0 text-end"><h4 class="m-0">$253.89</h4></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th colspan="6">
+                                                                                           <span data-en><strong>*</strong>Part supplied by the insurance company or the customer.</span>
+                                                                                           <span data-fr><strong>*</strong>Pieza suministrada por la compañía de seguros o el cliente.</span>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="text-end">Total sum: </th>
+                                                                                        <td class="text-end">$454.55</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="border-0 text-end"><p data-en>Discount</p><p data-fr>Descuento</p></th>
+                                                                                        <td class="border-0 text-end">- $50.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="text-end">Subtotal: </th>
+                                                                                        <td class="text-end">$454.55</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="border-0 text-end"><p data-en>Tax 9.5%</p><p data-fr>Impuesto 9.5%</p></th>
+                                                                                        <td class="border-0 text-end">$24.12</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="border-0 text-end"><strong>Total: </strong></th>
+                                                                                        <td class="border-0 text-end"><strong>$478.67</strong></td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <th scope="row" colspan="5" class="border-0 text-end"><h4 data-en>Balance due</h4><h4 data-fr>Saldo adeudado</h4></th>
+                                                                                        <td class="border-0 text-end"><h4 class="m-0">$0.00</h4></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                        
+                                                                        <!-- Legal -->
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                <small data-en>I authorize the above repairs and necessary materials. I agree to pay reasonable storage on vehicle left more than 2 working days after notification that the job is completed.</small>
+                                                                                <br><br>
+                                                                                <small data-en>This company does not assume any responsibility whatsoever for vehicles or other equipment left for repairs, or for articles left in vehicles or equipment.
+                                                                                    Vehicles driven by our employees at owners risk. In the event of non-payment of the said total charge, the owner authorizes this company to repossess
+                                                                                    the vehicle or article and hold it until this total bill is paid. All warranty work must be done by this company who will accept no financial responsibility
+                                                                                    whatsoever if warranty work is done elsewhere. 90 days warranty covers malfunction in labor job.
+                                                                                    Authorized by:</small>
+                                                                                <small data-fr>Autorizo las reparaciones anteriores y los materiales necesarios. Acepto pagar el almacenamiento razonable en el vehículo dejado más de 2 días hábiles después de la notificación de que se completó el trabajo.</small>                                                                                <br><br>
+                                                                                 <br><br>
+                                                                                <small data-fr>Esta empresa no asume responsabilidad alguna por los vehículos u otros equipos dejados para reparaciones, ni por los artículos dejados en los vehículos o equipos.
+                                                                                    Vehículos conducidos por nuestros empleados a riesgo de los propietarios. En caso de falta de pago de dicho cargo total, el propietario autoriza a esta empresa a recuperar
+                                                                                    el vehículo o artículo y retenerlo hasta que se pague esta factura total. Todo el trabajo de garantía debe ser realizado por esta empresa que no aceptará ninguna responsabilidad financiera.
+                                                                                    cualquier cosa si el trabajo de garantía se realiza en otro lugar. La garantía de 90 días cubre el mal funcionamiento en el trabajo de mano de obra.
+                                                                                    Autorizado por:</small>
+                                                                            </div>
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </section>
+
+                                            <!-- Confirm  -->
+                                            <h3>Confirm</h3>
+                                            <section>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-lg-6">
+                                                        <div class="text-center">
+                                                            <div class="mb-4">
+                                                                <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h5 data-en>Confirming estimate</h5>
+                                                                <h5 data-fr>Confirmación de presupuesto</h5>
+                                                                <p data-en class="text-muted">If everything it´s ok, please click on "Finish" button.</p>
+                                                                <p data-fr class="text-muted">Si todo está bien, de click al botón de "Finalizar"</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+
+                    
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © The Shop.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        <!--</div>-->
+        <!-- END layout-wrapper -->
+
+       
+{% endblock %}

@@ -1,0 +1,193 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load static %}
+
+
+            {% block content %}
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Dashboard</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column flex-md-row justify-content-start align-items-center mb-3">
+                                <div class="col-md-3 mb-3">
+                                    <label>Date range:&nbsp;&nbsp;</label>
+                                    <form method="post">
+                                    <div class="span-container d-flex">
+
+                                        {% csrf_token %}
+                                        <input type="date" value={{ from_date }} name="fromdate" class="form-control" data-date-inline-picker="true">
+                                        <input type="date" value={{ to_date }} name="todate" class="form-control" data-date-inline-picker="true">
+                                        <input type="submit" value="Search" class="btn btn-primary">
+                           <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+
+                                    </div>
+                                    </form>
+{#                                    <input type="text" name="daterange" class="form-control" />#}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="icons40 color-green-primary uil-usd-circle"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1">$<span data-plugin="counterup">{{ total_Revenu|floatformat:2}}</span></h4>
+                                            <p class="text-muted mb-0">Total Revenue</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="icons40 color-dark-primary uil-tachometer-fast"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ workshop_count}}</span></h4>
+                                            <p class="text-muted mb-0">Workshops</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="icons40 color-blue-primary uil-user-square"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ customer_count}}</span></h4>
+                                            <p class="text-muted mb-0">Customers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="icons40 color-orange-primary uil-clipboard-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-1 mt-1"><span data-plugin="counterup">{{ estimate_count}}</span></h4>
+                                            <p class="text-muted mb-0">Estimates</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- end col-->
+
+
+                            <div class="col-md-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="card-title mb-4">Sales</h4>
+
+                                        <div class="mt-1">
+                                            <ul class="list-inline main-chart mb-0">
+                                                <li class="list-inline-item chart-border-left me-0">
+                                                    <h3><span data-plugin="counterup">{{ total_invoice }}</span><span class="text-muted d-inline-block font-size-15 ms-3">Sales</span>
+                                                    </h3>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <script type="text/javascript">
+                                                var dashboard_chart_options = {
+                                                        series: [{
+                                                          name: "Sales",
+                                                          data: {{ graph_data }},
+                                                        }],
+                                                        xaxis: {
+                                                            categories: {{ graph_labels|safe }}
+                                                        }
+                                                    };
+                                            </script>
+                                            <div id="chart" class="apex-charts" dir="ltr"></div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+
+
+                            <div class="col-md-12 col-xl-3">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-12">
+                                        <div class="card bg-primary">
+                                            <div class="card-body">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-8">
+                                                        <p class="text-white font-size-18">Let´s work together!<br>Add a <strong>new estimate.</strong><i class="mdi mdi-arrow-right"></i></p>
+                                                        <div class="mt-4">
+                                                            <a href="{% url 'Presupuestos:step1' %}" class="btn btn-success waves-effect waves-light">Start here</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <img src="{% static 'assets/svg/img-dashboard-estimate.svg' %}" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end card-body-->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-12">
+                                        <div class="card bg-secondary">
+                                            <div class="card-body">
+                                                <div class="row align-items-center">
+                                                    <div class="col-sm-8">
+                                                        <p class="text-white font-size-18">Take a look to our <strong>debtors.</strong><i class="mdi mdi-arrow-right"></i></p>
+                                                        <div class="mt-4">
+                                                            <a href="{% url 'ReporteGanancias:debtors' %}" class="btn btn-success waves-effect waves-light">Over here</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="mt-4 mt-sm-0">
+                                                            <img src="{% static 'assets/svg/img-dashboard-debtor.svg' %}" class="img-fluid" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end card-body-->
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div> <!-- end col-->
+
+
+                        </div><!-- end row-->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+            {% endblock %}
+<script>
+
+</script>

@@ -1,0 +1,76 @@
+
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Adding payment...</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="reports.html">Reports</a></li>
+                                            <li class="breadcrumb-item"><a href="reports-technicians.html">Technicians payments</a></li>
+                                            <li class="breadcrumb-item active">Adding payments</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <!-- end page title -->
+
+
+                        <form enctype="multipart/form-data" method="post">
+                            {% csrf_token %}
+                            <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="validationCustom08">Concept</label>
+                                                            {{ technicianForm.content}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="validationCustom08">Quantity</label>
+{#                                                            <input type="text" class="form-control" id="validationCustom08" placeholder="" required="">#}
+                                                            {{ technicianForm.quantity}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="submit" class="btn btn-block btn-success mb-4" value="+ Add pay">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div> <!-- end row -->
+                        </form>
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+{% endblock %}

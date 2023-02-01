@@ -1,0 +1,243 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Editing my profile</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'profile' %}">My Profile</a></li>
+                                            <li class="breadcrumb-item active">Editing</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form action="POST">
+                                            {% csrf_token %}
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom08">Phone 1</label>
+                                                        {% render_field form.phone1 class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom09">Phone 2</label>
+                                                        {% render_field form.phone2 class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom10">FAX</label>
+                                                        {% render_field form.fax class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a fax number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom11">E-mail</label>
+                                                        {% render_field form.email class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide an e-mail.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom12">Website</label>
+                                                        {% render_field form.website class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a website.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="social-media-input">Social media 1</label>
+                                                        {% render_field form.socialMedia1 class="form-control" %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="social-media-input">Social media 2</label>
+                                                        {% render_field form.socialMedia2 class="form-control" %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="social-media-input">Social media 3</label>
+                                                        {% render_field form.socialMedia3 class="form-control" %}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-phoneno-input">Alternative contact 1</label>
+                                                        {% render_field form.alternativeContact class="form-control" %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3 only-corp hide-item">
+                                                        <label for="verticalnav-phoneno-input">Alternative contact 2</label>
+                                                        {% render_field form.alternativeContact2 class="form-control" %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3 only-corp hide-item">
+                                                        <label for="verticalnav-phoneno-input">Alternative contact 3</label>
+                                                        {% render_field form.alternativeContact3 class="form-control" %}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label d-block mb-3">Country :</label>
+                                                            <div class="custom-radio form-check form-check-inline">
+                                                                {% render_field form.country class="form-check-input" type="radio" %}
+                                                                <label class="form-check-label" for="customRadioInline1">United States</label>
+                                                            </div>
+                                                            <div class="custom-radio form-check form-check-inline">
+                                                                {% render_field form.country class="form-check-input" type="radio" %}
+                                                                <label class="form-check-label" for="customRadioInline2">Canada</label>
+                                                            </div>
+                                                            <div class="custom-radio form-check form-check-inline">
+                                                                {% render_field form.country class="form-check-input" type="radio" %}
+                                                                <label class="form-check-label" for="customRadioInline2">Canada</label>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom02">Address</label>
+                                                        {% render_field form.address class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide an adress.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom03">City / Town</label>
+                                                        {% render_field form.city class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid city.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom04">State</label>
+                                                        {% render_field form.state class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid state.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom05">Zip</label>
+                                                        {% render_field form.zip class="form-control" %}
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid zip.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <button class="btn btn-primary mb-3" type="submit">Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+
+
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+{% endblock %}

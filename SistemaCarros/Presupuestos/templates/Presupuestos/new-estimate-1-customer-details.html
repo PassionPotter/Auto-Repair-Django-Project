@@ -1,0 +1,138 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">New Estimate</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">The Shop</a></li>
+                                            <li class="breadcrumb-item active">New estimate</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Adding new estimate...</h4>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <section class="steppernav">
+                                                    <a href="" class="active"><span>1</span> Customer details</a>
+                                                    <a href=""><span>2</span> Vehicle</a>
+                                                    <a href=""><span>3</span> Parts</a>
+                                                    <a href=""><span>4</span> Labor</a>
+                                                    <a href=""><span>5</span> Pictures</a>
+                                                    <a href=""><span>6</span> Payments</a>
+                                                    <a href=""><span>7</span> Preview</a>
+                                                    <a href=""><span>8</span> Confirm</a>
+{#                                                    <a href="{% url 'Presupuestos:step1' %}" class="active"><span>1</span> Customer details</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step2' %}"><span>2</span> Vehicle</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step3' %}"><span>3</span> Parts</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step4' %}"><span>4</span> Labor</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step5' %}"><span>5</span> Pictures</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step6' %}"><span>6</span> Payments</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step7' %}"><span>7</span> Preview</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step8' %}"><span>8</span> Confirm</a>#}
+                                                </section>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <section>
+                                                    <form enctype="multipart/form-data" method="post">
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-12 mb-3">
+                                                                <h4 class="card-title">Customer information</h4>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <div class="mb-3">
+                                                                    <label>Title</label>
+                                                                    {{ presupuestosclientesform.titulo }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <div class="mb-3">
+                                                                   <label>First name</label>
+<!--                                                             <input type="text" class="form-control" id="verticalnav-firstname-input">-->
+                                                                    {{presupuestosclientesform.nombre}}
+                                                                </div>
+                                                            </div>
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3">
+                                                                <label>Last name</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-lastname-input">-->
+                                                                    {{presupuestosclientesform.apellido}}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Email</label>
+<!--                                                                <input type="email" class="form-control" id="verticalnav-email-input">-->
+                                                                {{presupuestosclientesform.correo}}
+                                                            </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Phone</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-phoneno-input">-->
+                                                                {{presupuestosclientesform.telefono}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Phone 2</label>
+<!--                                                                <input type="text" class="form-control" id="verticalnav-phoneno-input">-->
+                                                                {{presupuestosclientesform.tel}}
+                                                            </div>
+                                                        </div>
+
+                                                           <a href="{% url 'Presupuestos:step2' %}"> <button class="btn btn-primary" type="submit" value="Submit">Next</button></a>
+                                                          </div>
+                                                        </div>
+                                                    </form>
+                                                </section>
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+
+                    
+                </div>
+                <!-- End Page-content -->
+</div>
+{% endblock %}

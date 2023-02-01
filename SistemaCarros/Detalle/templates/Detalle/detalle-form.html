@@ -1,0 +1,7 @@
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    {{ form.media }}
+  <!---Falta agregar la etiqueta |safe?--->
+    <button type="submit">Save</button>
+</form>

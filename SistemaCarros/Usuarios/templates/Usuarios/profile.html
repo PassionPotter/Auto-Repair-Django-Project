@@ -1,0 +1,77 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load static %}
+
+
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">My Profile</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">My Profile</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row mb-4">
+                            <div class="col-xl-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <div class="clearfix"></div>
+                                            <div>
+                                                <img src="{%static 'assets/images/users/avatar-6.jpg' %}" alt="" class="avatar-lg rounded-circle img-thumbnail">
+                                            </div>
+                                            <h5 class="mt-3 mb-1">{{user.username}}</h5>
+                                            <div class="plantype">
+                                                <img src="../svg/plan.svg" alt="My plan" height="24">
+                                                <p><strong>PREMIUM</strong> PLAN</p>
+                                            </div>
+                                        </div>
+
+                                        <hr class="my-4">
+
+                                        <div class="profilebtns">
+                                            <a href="{% url 'edit-profile' user.id %}" class="edit_profile">Edit profile</a>
+                                            <a class="my_plan">Payment history</a>
+                                            <a href="{% url 'change-password' %}" class="change_password">Change password</a>
+                                            <a class="logout" href="{% url 'logout' %}">Logout</a>
+                                            <a class="delete_account" data-bs-toggle="modal" data-bs-target="#deletemodal">Delete account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+
+
+                </div>
+                <!-- End Page-content -->
+{% endblock %}

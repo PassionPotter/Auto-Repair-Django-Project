@@ -1,0 +1,596 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-22 14:38-0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\Clientes\forms.py:8 .\InformacionTiendas\forms.py:7
+msgid "United States"
+msgstr "Estados Unidos"
+
+#: .\Clientes\forms.py:9 .\InformacionTiendas\forms.py:8
+msgid "Canada"
+msgstr "Canadá"
+
+#: .\Clientes\forms.py:10 .\InformacionTiendas\forms.py:9
+msgid "Other"
+msgstr "Otro"
+
+#: .\Clientes\forms.py:14
+msgid "Corporative"
+msgstr "Corporativo"
+
+#: .\Clientes\forms.py:15
+msgid "Person"
+msgstr "Persona"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:21
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:19
+#: .\inventory\templates\inventory\inventory-add.html:22
+#: .\tecnicos\templates\tecnicos\add.html:22
+msgid "Adding"
+msgstr "Agregar"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:26
+#: .\Clientes\templates\Clientes\clientes-detail.html:22
+#: .\Clientes\templates\Clientes\clientes-detail.html:27
+#: .\Clientes\templates\Clientes\clientes-list.html:16
+#: .\Clientes\templates\Clientes\clientes-list.html:21
+#: .\Clientes\templates\Clientes\clientes_confirm_delete.html:17
+#: .\Clientes\templates\Clientes\clientes_confirm_delete.html:22
+#: .\SistemaCarros\templates\SistemaCarros\base.html:177
+msgid "Customers"
+msgstr "Clientes"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:27
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:25
+#: .\inventory\templates\inventory\inventory-add.html:28
+#: .\tecnicos\templates\tecnicos\add.html:28
+#, fuzzy
+#| msgid "Add new"
+msgid "Add"
+msgstr "Agregar Nuevo"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:39
+msgid "Customer information"
+msgstr "Información del Cliente"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:45
+#: .\Clientes\templates\Clientes\clientes-list.html:57
+msgid "Customer type"
+msgstr "Tipo de Cliente"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:58
+#: .\Clientes\templates\Clientes\clientes-list.html:56
+msgid "Company name"
+msgstr "Nombre de la compañía"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:67
+msgid "Title"
+msgstr "Título"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:74
+#: .\tecnicos\templates\tecnicos\add.html:50
+msgid "First name"
+msgstr "Nombre"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:84
+#: .\tecnicos\templates\tecnicos\add.html:59
+msgid "Last name"
+msgstr "Apellido"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:97
+#: .\Clientes\templates\Clientes\clientes-detail.html:45
+#: .\tecnicos\templates\tecnicos\add.html:71
+msgid "Phone 1"
+msgstr "Teléfono 1"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:107
+#: .\Clientes\templates\Clientes\clientes-detail.html:46
+#: .\tecnicos\templates\tecnicos\add.html:80
+msgid "Phone 2"
+msgstr "Teléfono 2"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:130
+#: .\Clientes\templates\Clientes\clientes-detail.html:48
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:184
+#: .\tecnicos\templates\tecnicos\add.html:89
+#: .\tecnicos\templates\tecnicos\list.html:51
+#: .\tecnicos\templates\tecnicos\tecnicos-detail.html:43
+msgid "E-mail"
+msgstr "Correo electrónico"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:140
+#: .\Clientes\templates\Clientes\clientes-detail.html:49
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:193
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:43
+msgid "Website"
+msgstr "Sitio web"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:152
+msgid "Social media 1"
+msgstr "Redes sociales 1"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:158
+#: .\Clientes\templates\Clientes\clientes-detail.html:51
+msgid "Social media 2"
+msgstr "Redes sociales 2"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:164
+#: .\Clientes\templates\Clientes\clientes-detail.html:52
+msgid "Social media 3"
+msgstr "Redes sociales 3"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:177
+#: .\Clientes\templates\Clientes\clientes-detail.html:53
+msgid "Alternative contact 1"
+msgstr "Contacto alternativo 1"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:183
+msgid "Alternative contact 2"
+msgstr "Contacto alternativo 2"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:189
+msgid "Alternative contact 3"
+msgstr "Contacto alternativo 3"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:203
+#: .\Clientes\templates\Clientes\clientes-detail.html:54
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:102
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:44
+msgid "Country"
+msgstr "País"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:216
+#: .\Clientes\templates\Clientes\clientes-detail.html:55
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:113
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:45
+msgid "Address"
+msgstr "Dirección"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:227
+#: .\Clientes\templates\Clientes\clientes-detail.html:56
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:124
+msgid "City / Town"
+msgstr "Ciudad"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:236
+#: .\Clientes\templates\Clientes\clientes-detail.html:57
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:133
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:47
+msgid "State"
+msgstr "Estado"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:245
+#: .\Clientes\templates\Clientes\clientes-detail.html:58
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:142
+msgid "Zip"
+msgstr "Código postal"
+
+#: .\Clientes\templates\Clientes\clientes-add.html:269
+#: .\InformacionTiendas\templates\InformacionTiendas\edit.html:43
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:241
+#: .\inventory\templates\inventory\inventory-add.html:109
+#: .\tecnicos\templates\tecnicos\add.html:124
+msgid "Save"
+msgstr "Guardar"
+
+#: .\Clientes\templates\Clientes\clientes-detail.html:50
+#, fuzzy
+#| msgid "Social media 1"
+msgid "Social media"
+msgstr "Redes sociales 1"
+
+#: .\Clientes\templates\Clientes\clientes-detail.html:59
+msgid "Registration date"
+msgstr "Registro desde"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:20
+msgid "The Shop"
+msgstr "Tienda"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:34
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:40
+#: .\inventory\templates\inventory\inventory-list.html:29
+#: .\tecnicos\templates\tecnicos\list.html:26
+msgid "Add new"
+msgstr "Agregar Nuevo"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:40
+#: .\inventory\templates\inventory\inventory-list.html:34
+msgid "Search"
+msgstr "Buscar"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:54
+msgid "Customer ID"
+msgstr "ID Cliente"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:55
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:45
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:64
+#: .\tecnicos\templates\tecnicos\list.html:50
+msgid "Name"
+msgstr "Nombre"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:59
+msgid "Register since"
+msgstr "Registro desde"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:60
+msgid "Actions"
+msgstr "Acciones"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:74
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:70
+#: .\inventory\templates\inventory\inventory-list.html:73
+#: .\tecnicos\templates\tecnicos\list.html:67
+msgid "Detail"
+msgstr "Detalle"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:77
+#: .\InformacionTiendas\templates\InformacionTiendas\edit.html:25
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:73
+#: .\inventory\templates\inventory\inventory-list.html:74
+#: .\tecnicos\templates\tecnicos\list.html:68
+msgid "Edit"
+msgstr "Editar"
+
+#: .\Clientes\templates\Clientes\clientes-list.html:80
+#: .\Clientes\templates\Clientes\clientes_confirm_delete.html:41
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:76
+#: .\InformacionTiendas\templates\InformacionTiendas\informaciontiendas_confirm_delete.html:41
+#: .\inventory\templates\inventory\inventory-list.html:75
+#: .\inventory\templates\inventory\inventory_confirm_delete.html:41
+#: .\tecnicos\templates\tecnicos\list.html:69
+#: .\tecnicos\templates\tecnicos\tecnicos_confirm_delete.html:41
+msgid "Delete"
+msgstr "Borrar"
+
+#: .\Clientes\templates\Clientes\clientes_confirm_delete.html:40
+#: .\InformacionTiendas\templates\InformacionTiendas\informaciontiendas_confirm_delete.html:40
+#: .\inventory\templates\inventory\inventory_confirm_delete.html:40
+#: .\tecnicos\templates\tecnicos\tecnicos_confirm_delete.html:40
+msgid "Are you sure you want to delete"
+msgstr "Estás seguro que quieres borrar"
+
+#: .\InformacionTiendas\forms.py:14
+msgid "Active"
+msgstr "Acciones"
+
+#: .\InformacionTiendas\forms.py:15
+msgid "Inactive"
+msgstr "Inactivo"
+
+#: .\InformacionTiendas\forms.py:20
+msgid "Monthly"
+msgstr "Mensual"
+
+#: .\InformacionTiendas\forms.py:21
+msgid "Annual"
+msgstr "Anual"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\edit.html:19
+#, fuzzy
+#| msgid "Edit"
+msgid "Editing"
+msgstr "Editar"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\edit.html:24
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:20
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:25
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:24
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:21
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:26
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:41
+#: .\InformacionTiendas\templates\InformacionTiendas\informaciontiendas_confirm_delete.html:17
+#: .\InformacionTiendas\templates\InformacionTiendas\informaciontiendas_confirm_delete.html:22
+#: .\SistemaCarros\templates\SistemaCarros\base.html:172
+msgid "Workshops"
+msgstr "Talleres"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\edit.html:39
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:39
+msgid "General information"
+msgstr "Información del Cliente"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:50
+msgid "Workshop name"
+msgstr "Talleres"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:52
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:234
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:49
+#: .\inventory\templates\inventory\inventory-add.html:90
+#: .\inventory\templates\inventory\inventory-list.html:57
+#: .\inventory\templates\inventory\inventory_detail.html:49
+msgid "Status"
+msgstr "Estatus"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\index.html:53
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:53
+msgid "Registration since"
+msgstr "Registro desde"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:56
+#, fuzzy
+#| msgid "Please provide a phone number."
+msgid "Please provide workshop`s registration number"
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:63
+msgid "TAX ID"
+msgstr "ID del Impuesto"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:66
+#, fuzzy
+#| msgid "Please provide a phone number."
+msgid "Please provide workshop`s registration number."
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:116
+#, fuzzy
+#| msgid "Please provide an e-mail."
+msgid "Please provide an address"
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:127
+#, fuzzy
+#| msgid "Please provide an e-mail."
+msgid "Please provide a valid city"
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:136
+#, fuzzy
+#| msgid "Please provide the last name."
+msgid "Please provide a valid state"
+msgstr "Por favor proporcione el apellido"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:145
+#, fuzzy
+#| msgid "Please provide an e-mail."
+msgid "Please provide a valid zip"
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:154
+#: .\tecnicos\templates\tecnicos\tecnicos-detail.html:44
+msgid "Phone Number 1"
+msgstr "Teléfono 1"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:157
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:166
+#, fuzzy
+#| msgid "Please provide a phone number."
+msgid "Please provide a phone number"
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:163
+#: .\tecnicos\templates\tecnicos\tecnicos-detail.html:45
+msgid "Phone Number 2"
+msgstr "Teléfono 2"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:175
+#, fuzzy
+#| msgid "Please provide a phone number."
+msgid "Please provide a fax number"
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:187
+#, fuzzy
+#| msgid "Please provide an e-mail."
+msgid "Please provide an e-mail"
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:196
+#, fuzzy
+#| msgid "Please provide an e-mail."
+msgid "Please provide a website"
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:211
+msgid "Tax for products and parts"
+msgstr "Impuesto sobre productos"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:214
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:223
+#, fuzzy
+#| msgid "Please provide a phone number."
+msgid "Please provide a percentage."
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:220
+msgid "Tax for extras"
+msgstr "Impuestos por extras"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:230
+#, fuzzy
+#| msgid "Please provide an e-mail."
+msgid "Please provide a plan."
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-agregar.html:237
+#, fuzzy
+#| msgid "Please provide a phone number."
+msgid "Please provide a percentage"
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\InformacionTiendas\templates\InformacionTiendas\informacion-tiendas-detail.html:46
+msgid "City"
+msgstr "Ciudad"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:22
+msgid "Pending stock report"
+msgstr "Reporte de existencias pendientes"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:27
+#: .\SistemaCarros\templates\SistemaCarros\base.html:202
+msgid "Reports"
+msgstr "Reportes"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:28
+msgid "Pending stock"
+msgstr "Existencias pendientes"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:63
+#: .\inventory\templates\inventory\inventory-add.html:54
+#: .\inventory\templates\inventory\inventory-list.html:51
+#: .\inventory\templates\inventory\inventory_detail.html:43
+msgid "Code"
+msgstr "Código"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:65
+#, fuzzy
+#| msgid "Unit Price"
+msgid "Price"
+msgstr "Precio Unitario"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:66
+#: .\inventory\templates\inventory\inventory-list.html:54
+msgid "Stock"
+msgstr "En almacén"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:67
+#: .\inventory\templates\inventory\inventory-add.html:48
+#: .\inventory\templates\inventory\inventory-list.html:55
+#: .\inventory\templates\inventory\inventory_detail.html:41
+msgid "Dealer"
+msgstr "Distribuidor"
+
+#: .\ReporteGanancias\templates\ReporteGanancias\reports-pending-stock.html:68
+msgid "Invoice number"
+msgstr "Número de Factura"
+
+#: .\SistemaCarros\templates\SistemaCarros\base.html:105
+msgid "Go"
+msgstr "Ir"
+
+#: .\SistemaCarros\templates\SistemaCarros\base.html:182
+msgid "Vehicles"
+msgstr "Vehículos"
+
+#: .\SistemaCarros\templates\SistemaCarros\base.html:187
+#: .\inventory\templates\inventory\inventory-add.html:27
+#: .\inventory\templates\inventory\inventory-list.html:19
+#: .\inventory\templates\inventory\inventory-list.html:23
+#: .\inventory\templates\inventory\inventory_confirm_delete.html:17
+#: .\inventory\templates\inventory\inventory_confirm_delete.html:22
+#: .\inventory\templates\inventory\inventory_detail.html:21
+#: .\inventory\templates\inventory\inventory_detail.html:26
+msgid "Inventory"
+msgstr "Inventario"
+
+#: .\SistemaCarros\templates\SistemaCarros\base.html:192
+msgid "Estimates"
+msgstr "Presupuestos"
+
+#: .\SistemaCarros\templates\SistemaCarros\base.html:197
+msgid "Invoices"
+msgstr "Facturas"
+
+#: .\SistemaCarros\templates\SistemaCarros\base.html:207
+#: .\tecnicos\templates\tecnicos\add.html:27
+#: .\tecnicos\templates\tecnicos\list.html:17
+#: .\tecnicos\templates\tecnicos\list.html:21
+#: .\tecnicos\templates\tecnicos\tecnicos-detail.html:21
+#: .\tecnicos\templates\tecnicos\tecnicos-detail.html:26
+#: .\tecnicos\templates\tecnicos\tecnicos_confirm_delete.html:17
+#: .\tecnicos\templates\tecnicos\tecnicos_confirm_delete.html:22
+msgid "Technicians"
+msgstr "Técnicos"
+
+#: .\inventory\templates\inventory\inventory-add.html:42
+msgid "Part information"
+msgstr "Información de la parte"
+
+#: .\inventory\templates\inventory\inventory-add.html:60
+#: .\inventory\templates\inventory\inventory-list.html:56
+#: .\inventory\templates\inventory\inventory_detail.html:44
+msgid "Invoice Number"
+msgstr "Número de Factura"
+
+#: .\inventory\templates\inventory\inventory-add.html:66
+#: .\inventory\templates\inventory\inventory-list.html:52
+#: .\inventory\templates\inventory\inventory_detail.html:45
+msgid "Description"
+msgstr "Descripción"
+
+#: .\inventory\templates\inventory\inventory-add.html:72
+#: .\inventory\templates\inventory\inventory_detail.html:46
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: .\inventory\templates\inventory\inventory-add.html:78
+#: .\inventory\templates\inventory\inventory-list.html:53
+#: .\inventory\templates\inventory\inventory_detail.html:47
+msgid "Unit Price"
+msgstr "Precio Unitario"
+
+#: .\inventory\templates\inventory\inventory-add.html:84
+#: .\inventory\templates\inventory\inventory_detail.html:48
+msgid "Minimum available"
+msgstr "Mínimo disponible"
+
+#: .\inventory\templates\inventory\inventory-list.html:58
+#: .\tecnicos\templates\tecnicos\list.html:54
+#, fuzzy
+#| msgid "Actions"
+msgid "Action"
+msgstr "Acciones"
+
+#: .\tecnicos\templates\tecnicos\add.html:42
+msgid "Technician information"
+msgstr "Información del Técnico"
+
+#: .\tecnicos\templates\tecnicos\add.html:53
+msgid "Please provide the first name."
+msgstr "Por favor proporcione el nombre"
+
+#: .\tecnicos\templates\tecnicos\add.html:62
+msgid "Please provide the last name."
+msgstr "Por favor proporcione el apellido"
+
+#: .\tecnicos\templates\tecnicos\add.html:74
+#: .\tecnicos\templates\tecnicos\add.html:83
+msgid "Please provide a phone number."
+msgstr "Por favor proporcione un número de teléfono"
+
+#: .\tecnicos\templates\tecnicos\add.html:92
+msgid "Please provide an e-mail."
+msgstr "Por favor proporcione un correo electrónico"
+
+#: .\tecnicos\templates\tecnicos\add.html:98
+#: .\tecnicos\templates\tecnicos\list.html:53
+#: .\tecnicos\templates\tecnicos\tecnicos-detail.html:46
+msgid "Notes"
+msgstr "Notas"
+
+#: .\tecnicos\templates\tecnicos\list.html:52
+msgid "Phone number 1"
+msgstr "Teléfono 1"
+
+#~ msgid "Let's translate this"
+#~ msgstr "Vamos a traducir esto"
+
+#~ msgid "Are you sure you want to delete: "
+#~ msgstr "Estás seguro que quieres borrar"
+
+#, fuzzy
+#~| msgid "Alternative contact 1"
+#~ msgid "Alternative contact"
+#~ msgstr "Contacto alternativo 1"
+
+#~ msgid "Homepage"
+#~ msgstr "Inicio"

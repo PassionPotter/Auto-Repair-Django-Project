@@ -1,0 +1,99 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            {% block content %}
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">{% trans "Workshops" %}</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">{% trans "Workshops" %}</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <a href="{% url 'InformacionTiendas:create_tiendas' %}">
+                                          <button type="button" class="btn btn-success mb-3 waves-effect waves-light" onclick="addNewWorkshop()">{% trans "Add new" %}</button>
+                                        </a>
+                                        <div class="table-rep-plugin">
+                                            {% if tiendas %}
+                                            <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                                <table id="tech-companies-1" class="table">
+                                                    <thead>
+                                                    <tr>
+
+                                                        <th data-priority="1">Logo</th>
+                                                        <th data-priority="1">{% trans "Workshop name" %}</th>
+                                                        <th data-priority="3">Plan</th>
+                                                        <th data-priority="3">{% trans "Status" %}</th>
+                                                        <th>{% trans "Registration since" %}</th>
+<!--                                                        <th data-priority="1">Details</th>-->
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for tienda in tiendas %}
+                                                        <tr>
+
+                                                            {% if tienda.logo %}
+                                                            <td><img src="{{tienda.logo.url}}" height="68"></td>
+                                                            {% endif %}
+                                                            <td>{{tienda.nombre_taller}}</td>
+                                                            <td>{{tienda.plan}}</td>
+                                                            <td>{{tienda.status}}</td>
+                                                            <td>{{tienda.registro_desde}}</td>
+                                                            <td>
+<!--                                                                <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil-search-alt"></i></a>-->
+                                                                <a href="{% url 'InformacionTiendas:tiendas_detail' tienda.id%}">{% trans "Detail" %}</a>
+                                                            </td>
+                                                            <td>
+                                                                <a href="{% url 'InformacionTiendas:edit_tiendas' tienda.id%}">{% trans "Edit" %}</a>
+                                                            </td>
+                                                             <td>
+                                                                <a href="{% url 'InformacionTiendas:tiendas_delete' tienda.id%}" class="text-danger" >{% trans "Delete" %}</a>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                          {% endif %}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+
+                {% endblock %}

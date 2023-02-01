@@ -1,0 +1,94 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load i18n %}
+
+
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+   <div class="page-content">
+      <form method="post">
+         {% csrf_token %}
+         <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+               <div class="col-12 mb-3">
+                  <div class="page-title-box d-flex align-items-center justify-content-between">
+                     <h4 class="mb-0">{% trans "Inventory" %}</h4>
+                     <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                           <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                           <li class="breadcrumb-item active">{% trans "Inventory" %}</li>
+                        </ol>
+                     </div>
+                  </div>
+               </div>
+               <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3">
+                  <a href="{% url 'inventory:add_inventory' %}"><button type="button" class="btn btn-success mb-3 mb-md-0 waves-effect waves-light" onclick="addNewPart()">{% trans "Add new" %}</button></a>
+                  <div class="col-md-6 mb-3 d-flex align-items-center justify-content-end">
+                        <div class="span-container d-flex">
+                           <input type="date" name="fromdate" class="form-control" data-date-inline-picker="true">
+                           <input type="date" name="todate" class="form-control" data-date-inline-picker="true">
+                           <input type="submit" value="{% trans 'Search' %}" class="btn btn-secondary">
+                           <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                        </div>
+                        <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                     </div>
+               </div>
+            </div>
+            <!-- end page title -->
+            <div class="row mt-3">
+               <div class="col-12">
+                  <div class="card">
+                     <div class="card-body">
+                        <div class="table-responsive mb-4">
+                           {% if inventory %}
+                           <table class="table table-centered datatable dt-responsive nowrap table--body-list" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;" id="datatable">
+                              <thead>
+                                 <tr class="bg-transparent">
+                                    <th>{% trans "Code" %}</th>
+                                    <th>{% trans "Description" %}</th>
+                                    <th>{% trans "Unit Price" %}</th>
+                                    <th>{% trans "Stock" %}</th>
+                                    <th>{% trans "Dealer" %}</th>
+                                    <th>{% trans "Invoice Number" %}</th>
+                                    <th>{% trans "Status" %}</th>
+                                    <th style="width: 120px;">{% trans "Action" %}</th>
+                                    <th style="width: 120px;"></th>
+                                    <th style="width: 120px;"></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 {% for inven in inventory %}
+                                 <tr>
+                                    <td><strong>{{inven.codigoInventory}}</strong></td>
+                                    <td>{{inven.descriptionInventory}}</td>
+                                    <td>${{inven.unitPriceInventory}}</td>
+                                    <td class="{% if inven.quantityInventory < 10 %}color-red-primary{% else %}text-dark{% endif %}">{{ inven.quantityInventory }}</span></td>
+                                    <td>{{inven.dealer}}</td>
+                                    <td>{{inven.invoiceNumber}}</td>
+                                    <td>{{inven.status}}</td>
+                                    <td><a href="{% url 'inventory:inventory_detail' inven.id%}">{% trans "Detail" %}</a></td>
+                                    <td><a href="{% url 'inventory:edit_inventory' inven.id%}">{% trans "Edit" %}</a></td>
+                                    <td><a href="{% url 'inventory:eliminar_inventory' inven.id%}" class="text-danger" >{% trans "Delete" %}</a></td>
+                                 </tr>
+                                 {% endfor %}
+                              </tbody>
+                           </table>
+                           {% endif %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- end col -->
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- container-fluid -->
+      </form>
+   </div>
+   <!-- End Page-content -->
+</div>
+{% endblock %}

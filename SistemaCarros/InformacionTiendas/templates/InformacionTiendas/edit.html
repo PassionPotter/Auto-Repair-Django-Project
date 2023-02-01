@@ -1,0 +1,63 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            {% block content %}
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">{% trans "Editing" %}...</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'InformacionTiendas:list_tiendas' %}">{% trans "Workshops" %}</a></li>
+                                            <li class="breadcrumb-item active">{% trans "Edit" %}</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-3">{% trans "General information" %}</h4>
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            {{form}}
+                                            <button type="submit">{% trans "Save" %}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+
+
+{% endblock %}

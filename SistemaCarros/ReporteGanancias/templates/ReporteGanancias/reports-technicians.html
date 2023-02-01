@@ -1,0 +1,130 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load mathfilters %}
+{% block content %}
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Technicians payments report</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="reports.html">Reports</a></li>
+                                            <li class="breadcrumb-item active">Technicians payments</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column flex-md-row justify-content-end align-items-center mb-3">
+
+
+
+                                <div class="d-flex justify-content-end align-items-center col-12 col-md-4">
+                                    <div class="text-right">
+                                        <label class="m-0">Date range:&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <form method="post">
+                                        <div class="span-container d-flex">
+
+                                                {% csrf_token %}
+                                                <input type="date" value={{ fromdate }} name="fromdate" class="form-control" data-date-inline-picker="true">
+                                                <input type="date" value={{ todate }} name="todate" class="form-control" data-date-inline-picker="true">
+                                                <input type="submit" value="Search" class="btn btn-secondary">
+
+
+                           <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <!-- end page title -->
+
+
+
+                        <div class="row mt-3">
+                            <div class="col-12">
+
+                                <div class="table-responsive mb-4">
+                                    <table class="table table-centered datatable dt-responsive table-card-list" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                                        <thead>
+                                            <tr class="bg-transparent">
+
+                                                <th>ID</th>
+                                                <th>Date</th>
+                                                <th>Name</th>
+                                                <th>Payment</th>
+                                                <th>Document number</th>
+                                                <th>Labor</th>
+                                                <th>Percentage</th>
+                                                <th>Deductibles</th>
+                                                <th>Adjustments</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Add payment</th>
+                                                <th style="width: 120px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for estimate in estimates %}
+                                                {% for labour in estimate.labours %}
+                                                    <tr>
+                                                        <td>{{ estimate.labour_count|add:forloop.counter }}</td>
+                                                        <td>{{ estimate.presupuesto.register_time}}</td>
+                                                        <td>{{ labour.labour.0.tecnico }}</td>
+                                                        <td >$<span id="id_form-{{ estimate.labour_count|add:forloop.counter }}-tech_payment">{{ labour.sum|floatformat:2}}</span ></td>
+                                                        <td><strong>#MN{{ estimate.presupuesto.id }}</strong></td>
+                                                        <td>{{ labour.labour.0.codigo}}</td>
+                                                        <td><input id="id_form-{{ estimate.labour_count|add:forloop.counter }}-tech_percent" class="form-control" type="number" min="0" max="100" placeholder="%" onkeyup="setTotalReports({{ estimate.labour_count|add:forloop.counter }}, this)"></td>
+                                                        <td><input id="id_form-{{ estimate.labour_count|add:forloop.counter }}-tech_deduct" class="form-control" type="text" placeholder="$" onkeyup="setTotalReports({{ estimate.labour_count|add:forloop.counter }})"></td>
+                                                        <td><input id="id_form-{{ estimate.labour_count|add:forloop.counter }}-tech_adjust" class="form-control" type="text" placeholder="$" onkeyup="setTotalReports({{ estimate.labour_count|add:forloop.counter }})"></td>
+                                                        <td >$<span id="id_form-{{ estimate.labour_count|add:forloop.counter }}-tech_total">{{ labour.sum|floatformat:2}}</span></td>
+                                                        <td>
+                                                            {% if estimate.presupuesto.status == "PENDING" %}
+                                                                <span class="badge bg-soft-warning font-size-12 ">Pending</span>
+                                                            {% elif estimate.presupuesto.status == "CANCELED" %}
+                                                                <span class="badge bg-soft-danger font-size-12 ">Canceled</span>
+                                                            {% else %}
+                                                                <span class="badge bg-soft-success font-size-12">Paid</span>
+                                                            {% endif %}
+                                                        </td>
+                                                       <td><a href="{% url 'ReporteGanancias:techniciansAddPayment' estimate.presupuesto.id labour.labour.0.tecnico.id%}" class="px-3 text-success"><i class="uil uil-plus-circle font-size-18"></i></a></td>
+                                                       <td><a onclick="technicianReportDetail({{ estimate.labour_count|add:forloop.counter }},{{ estimate.presupuesto.id }}, {{ labour.labour.0.tecnico.id }})"><i class="uil uil-search"></i></a></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+{% endblock %}

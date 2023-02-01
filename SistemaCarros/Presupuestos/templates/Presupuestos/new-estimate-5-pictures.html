@@ -1,0 +1,197 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">New Estimate</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">The Shop</a></li>
+                                            <li class="breadcrumb-item active">New estimate</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Adding new estimate...</h4>
+
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <section class="steppernav">
+                                                    <a href=""><span>1</span> Customer details</a>
+                                                    <a href=""><span>2</span> Vehicle</a>
+                                                    <a href=""><span>3</span> Parts</a>
+                                                    <a href=""><span>4</span> Labor</a>
+                                                    <a href=""  class="active"><span>5</span> Pictures</a>
+                                                    <a href=""><span>6</span> Payments</a>
+                                                    <a href=""><span>7</span> Preview</a>
+                                                    <a href=""><span>8</span> Confirm</a>
+{#                                                    <a href="{% url 'Presupuestos:step1' %}"><span>1</span> Customer details</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step2' %}"><span>2</span> Vehicle</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step3' %}"><span>3</span> Parts</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step4' %}"><span>4</span> Labor</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step5' %}"  class="active"><span>5</span> Pictures</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step6' %}"><span>6</span> Payments</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step7' %}"><span>7</span> Preview</a>#}
+{#                                                    <a href="{% url 'Presupuestos:step8' %}"><span>8</span> Confirm</a>#}
+                                                </section>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <section>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Picture list</h4>
+                                                                        <form method="POST">
+                                                                            {% csrf_token %}
+                                                                            <div id="drag_picture"></div>
+                                                                            <textarea id="car-input" name="fotoscarro"></textarea>
+                                                                             <a href="{% url 'Presupuestos:step4' %}" class="btn btn-secondary">Previous</a>
+                                                                             <a href="{% url 'Presupuestos:step6' %}"><button  class="btn btn-primary" type="submit" value="post">Next</button> </a>
+                                                                        </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </section>
+
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+
+                    
+                </div>
+            </div>         <!-- End Page-content -->
+{% endblock %}
+
+{% block script %}
+<script>
+    $('#car-input').hide()
+var carros = {};
+//Image Upload using Uppy.io
+    const uppy = new Uppy.Core({
+         id:'picture',
+         restrictions: {
+              maxFileSize: 10000000,        // at most 10 Mb per picture
+              maxTotalFileSize: 100000000,  // 100Mb = 10 x 10 Mb
+              maxNumberOfFiles: 10,         // at most 10 pictures
+              allowedFileTypes: ['.jpg', '.jpeg', '.png'],
+          },
+         onBeforeUpload: (files) => {
+            // we’ll be careful to return a new object, not mutating the original `files`
+            const updatedFiles = {}
+            Object.keys(files).forEach(fileID => {
+                updatedFiles[fileID] = {
+                    ...files[fileID],
+                    meta: {
+                        ...files[fileID].meta,
+                        name: 'car_' + files[fileID].meta.name, // modify filename
+                    },
+                }
+            })
+            return updatedFiles
+        },
+    });
+    const Dashboard = Uppy.Dashboard;
+    const Form = Uppy.Form;
+    const XHRUpload = Uppy.XHRUpload;
+
+    uppy.use(Dashboard, {
+         metaFields: [
+            { id: 'name', name: 'Name', placeholder: 'file name' },
+            {
+              id: 'default',
+              name: 'Default',
+              render ({ value, onChange, required, form }, h) {
+                return h('input', { type: 'checkbox', required, form, onChange: (ev) => onChange(ev.target.checked ? 'on' : ''), defaultChecked: value === 'on' })
+              },
+            },
+        ],
+        showRemoveButtonAfterComplete: false,
+        inline: true,
+        target: '#drag_picture',
+        showProgressDetails: true,
+        width: 1200,
+        height: 350,
+        proudlyDisplayPoweredByUppy:false,
+        locale:{
+              strings: {
+                          browseFiles: 'Upload Car Pictures',
+                          dropPasteFiles: '%{browseFiles}',
+                          editFile: 'Select image as main view',
+                          saveChanges: 'OK',
+                          editing: 'Select %{file} as main view'
+                      }
+                },
+        })
+        .use(XHRUpload, {
+            endpoint: '{% url "carros:create_carros_picture" %}',
+            formData: true,
+            fieldName:"files",
+        })
+        .use(Form, {
+            target: '#filesupload',
+            getMetaFromForm: true,
+            addResultToForm: true,
+            multipleResults: true,
+            submitOnSuccess: true,
+            triggerUploadOnSubmit: true
+        });
+
+        uppy.on('dashboard:file-edit-complete', (currentFile) => {
+            if(currentFile && currentFile.meta.default === 'on') {
+                uppy.getFiles().forEach(file=> {
+                    if(file.id !== currentFile.id) {
+                         uppy.setFileMeta(file.id, { default: "" });
+                    }
+                })
+            }
+        });
+
+        uppy.on('complete', (result) => {
+            console.log('Upload complete! We’ve uploaded these files:', result.successful);
+            for(let i=0; i<result.successful.length; i++){
+                item = result.successful[i].response.body;
+                for (key in item){
+                    carros[key] = [item[key],result.successful[i].meta.default];
+                }
+            }
+            $('#car-input').val(JSON.stringify(carros));
+        })
+</script>
+{% endblock %}

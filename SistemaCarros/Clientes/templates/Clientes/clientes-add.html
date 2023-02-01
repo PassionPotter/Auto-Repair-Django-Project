@@ -1,0 +1,258 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+<div class="page-content">
+   <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+         <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+               <h4 class="mb-0">{% trans "Adding" %}</h4>
+               <div class="page-title-right">
+                  <ol class="breadcrumb m-0">
+                     <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                     <li class="breadcrumb-item"><a href="{% url 'Clientes:clientes_list' %}">{% trans "Customers" %}</a></li>
+                     <li class="breadcrumb-item active">{% trans "Add" %}</li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end page title -->
+      <div class="row">
+         <div class="col-xl-8">
+            <div class="card">
+               <div class="card-body">
+                  <h4 class="card-title mb-3">{% trans "Customer information" %}</h4>
+                  <form enctype="multipart/form-data" method="post">
+                     {% csrf_token %}
+                     <div class="row mb-3">
+                        <div class="col-md-3">
+                           <div class="mb-3">
+                              <label>{% trans "Customer type" %}</label>
+                              <br>
+                              <div class="form-check form-check-inline">
+                                 {{ form.tipo }}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="show-form">
+                        <div class="row mb-3 only-corp hide-item">
+                           <div class="col-md-12">
+                              <div class="mb-3">
+                                 <label>{% trans "Company name" %}</label>
+                                 {{ form.corporacion }}
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row mb-3">
+                           <div class="col-md-2 only-person">
+                              <div class="mb-3">
+                                 <label>{% trans "Title" %}</label>
+                                 {{ form.titulo }}
+                              </div>
+                           </div>
+                           <div class="col-md-5 only-person">
+                              <div class="mb-3">
+                                 <label>{% trans "First name" %}</label>
+                                 {{ form.nombre }}
+                                 <div class="invalid-feedback">
+                                    Please provide the first name.
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-5 only-person">
+                              <div class="mb-3">
+                                 <label class="form-label">{% trans "Last name" %}</label>
+                                 {{ form.apellido }}
+                                 <div class="invalid-feedback">
+                                    Please provide the last name.
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="only-corp hide-item">
+                           <div class="row mb-3">
+                              <div class="col-md-4">
+                                 <div class="mb-3">
+                                    <label class="form-label">{% trans "Tax ID" %}</label>
+                                    {{ form.taxId }}
+                                    <div class="invalid-feedback">
+                                       Please provide an address.
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="mb-4">
+                                    <label class="form-label">{% trans "City / Town" %}</label>
+                                    {{ form.ciudad }}
+                                    <div class="invalid-feedback">
+                                       Please provide a valid city.
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="mb-3">
+                                    <label class="form-label">{% trans "State" %}</label>
+                                    {{ form.estado }}
+                                    <div class="invalid-feedback">
+                                       Please provide a valid state.
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="mb-3">
+                                    <label class="form-label">{% trans "Zip" %}</label>
+                                    {{ form.zip }}
+                                    <div class="invalid-feedback">
+                                       Please provide a valid zip.
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                           <div class="col-md-5">
+                              <div class="mb-3">
+                                 <label class="form-label">{% trans "Phone" %}</label>
+                                 {{ form.telefono }}
+                                 <div class="invalid-feedback">
+                                    Please provide a phone number.
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-5 only-corp hide-item">
+                              <div class="mb-3">
+                                 <label class="form-label">FAX</label>
+                                 {{ form.fax }}
+                                 <div class="invalid-feedback">
+                                    Please provide a fax number.
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <hr>
+                        <div class="row mb-3">
+                           <div class="col-md-6 only-person">
+                              <div class="mb-3">
+                                 <label class="form-label">{% trans "Alternative Contact Name" %}</label>
+                                 {{ form.alternativeContactName }}
+                                 <div class="invalid-feedback">
+                                    Please provide a phone number.
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6 only-person">
+                              <div class="mb-3">
+                                 <label class="form-label">{% trans "Alternative Contact Phone Number" %}</label>
+                                 {{ form.alternativeContactPhoneNumber }}
+                                 <div class="invalid-feedback">
+                                    Please provide a phone number.
+                                 </div>
+                              </div>
+                           </div>
+
+                        </div>
+                        <div class="row mb-3">
+                           <div class="col-md-4">
+                              <div class="mb-3">
+                                 <label class="form-label">{% trans "E-mail" %}</label>
+                                 {{ form.correo }}
+                                 <div class="invalid-feedback">
+                                    Please provide an e-mail.
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-8 only-corp hide-item">
+                              <div class="mb-3">
+                                 <label class="form-label">{% trans "Website" %}</label>
+                                 {{ form.website }}
+                                 <div class="invalid-feedback">
+                                    Please provide a website.
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="mb-3">
+                                 <label>{% trans "Social media" %}</label>
+                                 {{ form.social_media }}
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12 mb-3">
+                              <hr class="only-corp">
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-4">
+                              <div class="mb-3 only-corp hide-item">
+                                 <label>{% trans "Representative" %}</label>
+                                 {{ form.representative }}
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="mb-3 only-corp hide-item">
+                                 <label>{% trans "Name" %}</label>
+                                 {{ form.nameRepresentative }}
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="mb-3 only-corp hide-item">
+                                 <label>{% trans "Department" %}</label>
+                                 {{ form.department }}
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="mb-3 only-corp hide-item">
+                                 <label>{% trans "Phone Representative" %}</label>
+                                 {{ form.phoneRepresentative }}
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="mb-3 only-corp hide-item">
+                                 <label>{% trans "Email Representative" %}</label>
+                                 {{ form.emailRepresentative }}
+                              </div>
+                           </div>
+                           <div class="col-md-4">
+                              <div class="mb-3 only-corp hide-item">
+                                 <label>{% trans "Notes" %}</label>
+                                 {{ form.notesRepresentative }}
+                              </div>
+                           </div>
+                        </div>
+
+                        <div class="col-md-4">
+                           <div class="mb-3">
+                              {{ form.fecha_registro }}
+                              <div class="invalid-feedback">
+                                 Please provide a valid zip.
+                              </div>
+                           </div>
+                        </div>
+                        <button class="btn btn-primary mb-3" type="submit" value="Post">{% trans "Save" %}</button>
+                  </form>
+                   </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end card -->
+         </div>
+         <!-- end col -->
+      </div>
+      <!-- end row -->
+   </div>
+   <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+{% endblock %} 

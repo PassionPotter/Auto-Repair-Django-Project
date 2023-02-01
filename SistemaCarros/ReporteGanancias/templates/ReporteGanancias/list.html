@@ -1,0 +1,233 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Reports</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Reports</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row mt-3">
+
+                            <div class="col-12 col-md-4">
+                                <div class="card bg-gradient-success">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-8">
+                                                <h3 class="text-white">Top 10</h3>
+                                                <p class="text-white font-size-18">Get a list of vehicles, labors & services</p>
+                                                <div class="mt-4">
+                                                    <a href="{% url 'ReporteGanancias:workshops' %}" class="btn btn-success waves-effect waves-light">Go!</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="mt-4 mt-sm-0">
+                                                    <img src="{%static 'assets/svg/img-dashboard-estimate.svg' %}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <!-- Workshops Button -->
+
+                            <div class="col-12 col-md-4">
+                                <div class="card bg-gradient-danger">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-8">
+                                                <h3 class="text-white">Pending stock</h3>
+                                                <p class="text-white font-size-18">Review the business purchase needs</p>
+                                                <div class="mt-4">
+                                                    <a href="{% url 'ReporteGanancias:pending-stock' %}" class="btn btn-danger waves-effect waves-light">Go!</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="mt-4 mt-sm-0">
+                                                    <img src="{%static 'assets/svg/img-dashboard-estimate.svg' %}" class="img-fluid" alt="">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <!-- Pending stock Button -->
+
+                        </div>
+
+
+                        <div class="row mt-3">
+                            <div class="col-12 col-md-4">
+                                <div class="card bg-gradient-warning">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-8">
+                                                <h3 class="text-white">Debtors</h3>
+                                                <p class="text-white font-size-18">The simple way to know who owes us</p>
+                                                <div class="mt-4">
+                                                    <a href="{% url 'ReporteGanancias:debtors' %}" class="btn btn-warning waves-effect waves-light">Go!</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="mt-4 mt-sm-0">
+                                                    <img src="{%static 'assets/svg/img-dashboard-estimate.svg' %}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <!-- Debtors Button -->
+
+                            <div class="col-12 col-md-4">
+                                <div class="card bg-primary">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-8">
+                                                <h3 class="text-white">Records</h3>
+                                                <p class="text-white font-size-18">Service summary per vehicle</p>
+                                                <div class="mt-4">
+                                                    <a href="{% url 'ReporteGanancias:records' %}" class="btn btn-success btn-light-1 waves-effect waves-light">Go!</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="mt-4 mt-sm-0">
+                                                    <img src="{%static 'assets/svg/img-dashboard-estimate.svg' %}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <!-- Records Button -->
+
+
+                        </div> <!-- end row -->
+
+
+                        <div class="row mt-3">
+                            <div class="col-12 col-md-4">
+                                <div class="card bg-gradient-gray-1">
+                                    <div class="card-body">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-8">
+                                                <h3 class="text-white">Technicians payments</h3>
+                                                <p class="text-white font-size-18">List of payments by technician</p>
+                                                <div class="mt-4">
+                                                    <a href="{% url 'ReporteGanancias:technicians' %}" class="btn btn-gray-1 waves-effect waves-light">Go!</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="mt-4 mt-sm-0">
+                                                    <img src="{%static 'assets/svg/img-dashboard-estimate.svg' %}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div>
+                            </div>
+                            <!-- Technicians Button -->
+
+
+                        </div> <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- The Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <!-- <h5 class="modal-title" id="exampleModalLabel"></h5> -->
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <!-- Swiper -->
+                                    <div class="swiper mySwiper">
+                                        <div class="swiper-wrapper">
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        <div class="swiper-slide"><img src="{%static 'images/square-logo-demo.jpg' %}" alt="LOGO" height="68"></div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- end row -->
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- end main content-->
+
+{% endblock %}

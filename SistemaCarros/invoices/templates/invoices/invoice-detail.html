@@ -1,0 +1,277 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load mathfilters %}
+{% block content %}
+    <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Estimate preview</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">The Shop</a></li>
+                                            <li class="breadcrumb-item active"><a href="javascript: void(0);">Estimates</a></li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card">
+                                                    <div class="card-body">
+
+                                                        <div class="estimatepreview align-items-center">
+                                                            <form method="post">
+                                                                <button href="" class="btn btn-success" type="submit">Send</button>
+                                                            </form>
+
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" id="formCheck2">
+                                                                <label class="form-check-label" for="formCheck2">
+                                                                    Spanish translation
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr>
+
+
+                                                        <div class="invoice-title">
+                                                            <h4 class="float-end font-size-16">Estimate #MN{{ presupuesto.id }}
+                                                                {% if presupuesto.status == "PENDING" %}
+                                                                    <span class="badge bg-warning font-size-12 ms-2">Pending</span>
+                                                                {% elif presupuesto.status == "CANCELED" %}
+                                                                    <span class="badge bg-danger font-size-12 ms-2">Canceled</span>
+                                                                {% else %}
+                                                                    <span class="badge bg-success font-size-12 ms-2">Paid</span>
+                                                                {% endif %}
+                                                            </h4>
+
+
+                                                            <div class="mb-4">
+                                                                <strong>LOGO</strong>
+                                                            </div>
+                                                            <div class="text-muted">
+                                                                {% load static %}
+                                                                <img src="{% get_media_prefix %}{{presupuesto.carro.new_name}}" height="68"/>
+                                                            </div>
+                                                        </div>
+
+                                                        <hr class="my-4">
+
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <div class="text-muted">
+                                                                    <h5 class="font-size-16 mb-3">Customer information:</h5>
+                                                                    <h5 class="font-size-15 mb-2">{{ presupuesto.cliente.titulo }}
+                                                                        {{ presupuesto.cliente.nombre }} {{ presupuesto.cliente.apellido }}</h5>
+{#                                                                    <p>License: <strong>{{ presupuesto.cliente. }}</strong></p>#}
+                                                                    <p class="mb-1">{{ presupuesto.cliente.correo}}</p>
+                                                                    <p>{{ presupuesto.cliente.telefono }}</p>
+                                                                    <p>{{ presupuesto.cliente.tel }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="text-muted">
+                                                                    <h5 class="font-size-16 mb-3">Vehicle information:</h5>
+                                                                    <h5 class="font-size-15 mb-2">License plate:
+                                                                        {{ presupuesto.carro.placas }}</h5>
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <p class="mb-1">Make: <strong>{{ presupuesto.carro.marca }}</strong></p>
+                                                                            <p class="mb-1">Model: <strong>{{ presupuesto.carro.modelo }}</strong></p>
+                                                                            <p class="mb-1">Color: <strong>{{ presupuesto.carro.color }}</strong></p>
+                                                                            <p class="mb-1">Year: <strong>{{ presupuesto.carro.año }}</strong></p>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <p class="mb-1">Type: <strong>{{ presupuesto.carro.tipo }}</strong></p>
+                                                                            <p class="mb-1">VIN number: <strong>{{ presupuesto.carro.vin }}</strong></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="text-muted text-sm-end">
+                                                                    <div>
+                                                                        <h5 class="font-size-16 mb-1">Estimate Date:</h5>
+                                                                        <p>{{ presupuesto.register_time.date}}</p>
+                                                                    </div>
+                                                                    <div class="mt-4">
+                                                                        <h5 class="font-size-16 mb-3">Summary:</h5>
+                                                                        <p class="mb-1">{{ presupuesto.resumen}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Labor table -->
+                                                        <div class="py-2 my-4">
+                                                            <h5 class="font-size-15">Labor summary</h5>
+
+                                                            <div class="table-responsive">
+                                                                <table class="table table-nowrap table-centered mb-0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Description</th>
+                                                                            <th>Labor rate</th>
+                                                                            <th>Hours:Min</th>
+                                                                            <th>Tax Free</th>
+                                                                            <th class="text-end" >Total</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for labour in presupuesto.manoobra_set.values %}
+                                                                        <tr>
+                                                                            <th class="first-column">{{ labour.descripcion}}</th>
+                                                                            <td>{{ labour.tarifa}}</td>
+                                                                            <td>{{ labour.horas }}:{{ labour.minutos }}</td>
+                                                                            <td >{{labour.libre_impuestos}}</td>
+                                                                            <td class="text-end">{{labour.tarifa_total}}</td>
+                                                                        </tr>
+                                                                        {% endfor %}
+                                                                        <tr>
+                                                                            <th scope="row" colspan="4" class="border-0 text-end">Discount</th>
+                                                                            <td class="border-0 text-end"><h4 class="m-0">${{ presupuesto.descuentoTotal_manaobra }}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                                                            <td class="border-0 text-end"><h4 class="m-0">${{ presupuesto.total_manaobra }}</h4></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <!-- Parts table -->
+                                                        <div class="py-2 my-4">
+                                                            <h5 class="font-size-15">Parts summary</h5>
+
+                                                            <div class="table-responsive">
+                                                                <table class="table table-nowrap table-centered mb-0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Quantity</th>
+                                                                            <th>Description</th>
+                                                                            <th>Price</th>
+                                                                            <th>Disc.%</th>
+                                                                            <th>Tax Fees</th>
+                                                                            <th class="text-end" style="width: 120px;">Total</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    {% for parte in presupuesto.parte_set.values %}
+                                                                        <tr>
+                                                                            <th class="quantity-column">{{ parte.quantity }}</th>
+                                                                            <td>{{ parte.descripcion}}</td>
+                                                                            <td>{{ parte.unit_price }}</td>
+                                                                            <td>{{ parte.descuento_parte }}</td>
+                                                                            <td>{{ parte.tax_free }}</td>
+                                                                            <td class="text-end">${{ parte.total_price }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                        <tr>
+                                                                            <th scope="row" colspan="5" class="border-0 text-end">Discount</th>
+                                                                            <td class="border-0 text-end"><h4 class="m-0">${{ presupuesto.descuentoTotal_parte }}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                                                                            <td class="border-0 text-end"><h4 class="m-0">${{ presupuesto.total_parte }}</h4></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="5">
+                                                                               <strong>*</strong> Part supplied by the insurance company or the customer.
+                                                                            </th>
+                                                                        </tr>
+
+
+
+                                                                        <tr>
+                                                                        <th scope="row" colspan="5" class="border-0 text-end">Discount: </th>
+                                                                            <td class="border-0 text-end">- ${{presupuesto.descuentoTotal_parte|addition:presupuesto.descuentoTotal_manaobra}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row" colspan="5" class="text-end">Total sum: </th>
+                                                                            <td class="text-end">${{ presupuesto.total_manaobra|addition:presupuesto.total_parte }}</td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <th scope="row" colspan="5" class="text-end">Paid Amount: </th>
+                                                                            <td class="text-end">${{ presupuesto.total_paid }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row" colspan="5" class="border-0 text-end"><h4>Balance due</h4></th>
+                                                                            <td class="border-0 text-end"><h4 class="m-0">${{ presupuesto.total_manaobra|addition:presupuesto.total_parte|sub:presupuesto.total_paid|floatformat:2 }}</h4></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <!-- Legal -->
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <small>I authorize the above repairs and necessary materials. I agree to pay reasonable storage on vehicle left more than 2 working days after notification that the job is completed.</small>
+                                                                    <br><br>
+                                                                    <small>This company does not assume any responsibility whatsoever for vehicles or other equipment left for repairs, or for articles left in vehicles or equipment.
+                                                                        Vehicles driven by our employees at owners risk. In the event of non-payment of the said total charge, the owner authorizes this company to repossess
+                                                                        the vehicle or article and hold it until this total bill is paid. All warranty work must be done by this company who will accept no financial responsibility
+                                                                        whatsoever if warranty work is done elsewhere. 90 days warranty covers malfunction in labor job.
+                                                                        Authorized by:</small>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © The Shop.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+{% endblock %}

@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Edit...</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- App favicon -->
+        <!--<link rel="shortcut icon" href="assets/images/favicon.ico">-->
+
+        <!-- Bootstrap Css -->
+        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Custom Css-->
+        <link href="assets/css/custom.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+
+    <body>
+
+    <!-- <body data-layout="horizontal" data-topbar="colored"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="dashboard.html" class="logo logo-dark">
+                                <!-- <span class="logo-sm">
+                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/logo-dark.png" alt="" height="20">
+                                </span> -->
+                                <strong>LOGO</strong>
+                            </a>
+
+                            <a href="dashboard.html" class="logo logo-light">
+                                <!-- <span class="logo-sm">
+                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="assets/images/logo-dark.png" alt="" height="20">
+                                </span> -->
+                                <strong>LOGO</strong>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <!-- App Search-->
+                        <form class="app-search d-none d-lg-block">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="uil-search"></span>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="d-flex">
+
+                        <div class="dropdown d-inline-block d-lg-none ms-2">
+                            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="uil-search"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                aria-labelledby="page-header-search-dropdown">
+
+                                <form class="p-3">
+                                    <div class="m-0">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-inline-block language-switch">
+                            <button type="button" class="btn header-item waves-effect"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="dropdown d-none d-lg-inline-block ms-1">
+                            <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
+                                <i class="uil-minus-path"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-6.jpg"
+                                    alt="Header Avatar">
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">Heriberto</span>
+                                <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <a class="dropdown-item" href="#"><i class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span class="align-middle">View Profile</span></a>
+                                <a class="dropdown-item" href="#"><i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </header>
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+
+                <!-- LOGO -->
+                <div class="navbar-brand-box">
+                    <a href="dashboard.html" class="logo logo-dark">
+                        <!-- <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="assets/images/logo-dark.png" alt="" height="20">
+                        </span> -->
+                        <strong>LOGO</strong>
+                    </a>
+
+                    <a href="dashboard.html" class="logo logo-light">
+                        <!-- <span class="logo-sm">
+                            <img src="assets/images/logo-sm.png" alt="" height="22">
+                        </span>
+                        <span class="logo-lg">
+                            <img src="assets/images/logo-light.png" alt="" height="20">
+                        </span> -->
+                        <strong>LOGO</strong>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+
+                <div data-simplebar class="sidebar-menu-scroll">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title">Menu</li>
+
+                            <li>
+                                <a href="dashboard.html" class="waves-effect">
+                                    <i class="uil-home-alt"></i><span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="workshops.html" class="waves-effect active">
+                                    <i class="uil-tachometer-fast"></i><span>Workshops</span>
+                                </a>
+                            </li>
+
+                            <li class="mm-active">
+                                <a href="customers.html" class="waves-effect">
+                                    <i class="uil-user-square"></i><span>Customers</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="vehicles.html" class="waves-effect">
+                                    <i class="uil-car-sideview"></i><span>Vehicles</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a  class="waves-effect">
+                                    <i class="uil-cube"></i><span>Inventory</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a  class="waves-effect">
+                                    <i class="uil-clipboard-alt"></i><span>Estimates</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a  class="waves-effect">
+                                    <i class="uil-document-layout-left"></i><span>Invoices</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="waves-effect">
+                                    <i class="uil-graph-bar"></i><span>Reports</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Edit...</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'Clientes:clientes_list' %}">Customers</a></li>
+                                            <li class="breadcrumb-item active">Add</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-3">Customer information</h4>
+                                        <form class="needs-validation" novalidate>
+                                            <div class="row mb-3">
+                                                <div class="col-md-3">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-firstname-input">Customer type</label>
+                                                        <br>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="customer-type" id="inlineRadio1" value="person" checked>
+                                                            <label class="form-check-label" for="inlineRadio1">Person</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="customer-type" id="inlineRadio2" value="corporation">
+                                                            <label class="form-check-label" for="inlineRadio2">Corporation</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 only-corp hide-item">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label for="corporation-name-input">Corporation name</label>
+                                                        <input type="text" class="form-control" id="corporation-name-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-2 only-person">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-firstname-input">Title</label>
+                                                        <select class="form-select">
+                                                            <option>Select</option>
+                                                            <option>Mrs.</option>
+                                                            <option>Miss</option>
+                                                            <option>Mr.</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 only-person">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-firstname-input">First name</label>
+                                                        <input type="text" class="form-control" id="verticalnav-firstname-input" required>
+                                                        <div class="invalid-feedback">
+                                                            Please provide the first name.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 only-person">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="verticalnav-lastname-input">Last name</label>
+                                                        <input type="text" class="form-control" id="verticalnav-lastname-input" required>
+                                                        <div class="invalid-feedback">
+                                                            Please provide the last name.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom08">Phone 1</label>
+                                                        <input type="text" class="form-control" id="validationCustom08" placeholder="Phone 1" required>
+                                                        <div class="invalid-feedback">
+                                                            Please provide a phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom09">Phone 2</label>
+                                                        <input type="text" class="form-control" id="validationCustom09" placeholder="Phone 2">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a phone number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom10">FAX</label>
+                                                        <input type="text" class="form-control" id="validationCustom10" placeholder="FAX">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a fax number.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom11">E-mail</label>
+                                                        <input type="text" class="form-control" id="validationCustom11" placeholder="E-mail" required>
+                                                        <div class="invalid-feedback">
+                                                            Please provide an e-mail.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom12">Website</label>
+                                                        <input type="text" class="form-control" id="validationCustom12" placeholder="Website">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a website.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="social-media-input">Social media 1</label>
+                                                        <input type="text" class="form-control" id="social-media-input">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="social-media-input">Social media 2</label>
+                                                        <input type="text" class="form-control" id="social-media-input">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="social-media-input">Social media 3</label>
+                                                        <input type="text" class="form-control" id="social-media-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-phoneno-input">Alternative contact 1</label>
+                                                        <input type="text" class="form-control" id="verticalnav-phoneno-input">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3 only-corp hide-item">
+                                                        <label for="verticalnav-phoneno-input">Alternative contact 2</label>
+                                                        <input type="text" class="form-control" id="verticalnav-phoneno-input">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3 only-corp hide-item">
+                                                        <label for="verticalnav-phoneno-input">Alternative contact 3</label>
+                                                        <input type="text" class="form-control" id="verticalnav-phoneno-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label d-block mb-3">Country :</label>
+                                                        <div class="custom-radio form-check form-check-inline">
+                                                            <input type="radio" id="customRadioInline1" name="outer-group[0][customRadioInline1]" class="form-check-input">
+                                                            <label class="form-check-label" for="customRadioInline1">United States</label>
+                                                        </div>
+                                                        <div class="custom-radio form-check form-check-inline">
+                                                            <input type="radio" id="customRadioInline2" name="outer-group[0][customRadioInline1]" class="form-check-input">
+                                                            <label class="form-check-label" for="customRadioInline2">Canada</label>
+                                                        </div>
+                                                        <div class="custom-radio form-check form-check-inline">
+                                                            <input type="radio" id="customRadioInline3" name="outer-group[0][customRadioInline1]" class="form-check-input">
+                                                            <label class="form-check-label" for="customRadioInline3">Other</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom02">Adress</label>
+                                                        <input type="text" class="form-control" id="validationCustom02" placeholder="Adress" value="">
+                                                        <div class="invalid-feedback">
+                                                            Please provide an adress.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom03">City / Town</label>
+                                                        <input type="text" class="form-control" id="validationCustom03" placeholder="City / Town">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid city.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom04">State</label>
+                                                        <input type="text" class="form-control" id="validationCustom04" placeholder="State">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid state.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="validationCustom05">Zip</label>
+                                                        <input type="text" class="form-control" id="validationCustom05" placeholder="Zip">
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid zip.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <hr>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="form-label" for="chooseVehicles">Add vehicles</label>
+                                                    <div class="tags">
+                                                        <span class="input-tags" contenteditable></span>
+                                                        <ul class="tags-drop active">
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <button class="btn btn-primary mb-3" type="submit">Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div> <!-- end col -->
+
+
+                        </div>
+                        <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Mechanix Boss POS
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+
+        <!-- parsleyjs -->
+        <script src="assets/libs/parsleyjs/parsley.min.js"></script>
+
+        <script src="assets/js/pages/form-validation.init.js"></script>
+
+        <!-- App js -->
+        <script src="assets/js/app.js"></script>
+
+        <!-- UPLOAD IMAGE js -->
+        <script src="js/upload-image.js"></script>
+
+
+        <!-- SHOW FORM OPTIONS -->
+        <script>
+            var $onlyperson = $(".only-person");
+            var $onlycorp = $(".only-corp");
+            var $both = $(".both");
+
+
+
+            $("input[type=radio][name=customer-type]").on('change', function() {
+            var radVal = $(this).val();
+            if (radVal == 'person') {
+                $onlyperson.addClass('show-item').removeClass('hide-item');
+                $onlycorp.addClass('hide-item').removeClass('show-item');
+                $both.addClass('show-item');
+            } else if (radVal == 'corporation') {
+                $onlyperson.addClass('hide-item').removeClass('show-item');
+                $onlycorp.addClass('show-item').removeClass('hide-item');
+                $both.addClass('show-item');
+            }
+            });
+        </script>
+
+        <!-- AUTOCOMPLETE MULTIPLE OPTIONS -->
+        <script>
+            let tags = [];
+            const users = [ 'RA8-H5G',
+                            '804623F',
+                            '682GRT',
+                            '468-1378',
+                            'HJK-4597',
+                            'HYR-025',
+                            'FGY-4597',
+                            '175-GR5',
+                            'KFD-478',
+                            'RE-796',
+                            'MH3408',
+                            '045ATR',
+                            'HJU DFU' ];
+            const inputTags = document.querySelector('.input-tags');
+            const tagsContainer = document.querySelector('.tags');
+            const tagsDrop = document.querySelector('.tags-drop');
+            const tagListItems = document.querySelectorAll('.tags-drop__item');
+            let usersList = [...tagListItems].map( user => user.textContent);
+
+            inputTags.addEventListener('input', e => {
+                const newTag = sanitizeNewTag(inputTags.textContent);
+                popupList(inputTags.textContent);
+                if (!newTag) return;
+                addTag(newTag);
+                inputTags.textContent = '';
+            });
+
+            tagsContainer.addEventListener('click', e => {
+
+                if (!e.target.matches('.tag')) {
+                //inputTags.textContent = '';
+                return;
+                }
+                e.target.remove();
+                tags = tags.filter(tag => tag !== e.target.textContent.slice(0, -2));
+            })
+
+            const sanitizeNewTag = newTag => {
+                const lastChar = newTag.slice(-1);
+                const tag = newTag.slice(0, -1).trim().toLowerCase();
+                return lastChar === ',' && tag !== ''? tag : false;
+            }
+
+            const addTag = tagToAdd => {
+                if (tags.includes(tagToAdd)) return;
+
+                const tag = document.createElement('SPAN');
+                tag.setAttribute('class', 'tag');
+                tag.innerHTML = `${tagToAdd} &times;`;
+                tags.push(tagToAdd);
+                inputTags.insertAdjacentElement('beforebegin', tag);
+            }
+
+            const popupList = tagToCheck => {
+                tagsDrop.innerHTML = '';
+                if (inputTags.textContent.trim() === '') return;
+                const usersFiltered = users.filter(user =>  user.toLowerCase().includes(tagToCheck.toLowerCase()));
+
+                if (usersFiltered.length === 0 ) return;
+                console.log(usersFiltered);
+                console.log('typing');
+                const fragment = document.createDocumentFragment();
+                usersFiltered.forEach(user => {
+                const li = document.createElement('LI');
+                li.setAttribute('class', 'tags-drop__item');
+                li.setAttribute('tabindex', '0');
+                li.textContent = user;
+                fragment.appendChild(li);
+                })
+                tagsDrop.appendChild(fragment);
+            }
+
+            tagsDrop.addEventListener('click', e => {
+                if(!e.target.matches('.tags-drop__item')) return;
+                addTag(e.target.textContent);
+                inputTags.textContent = '';
+                tagsDrop.innerHTML = '';
+                inputTags.focus();
+            })
+            tagsDrop.addEventListener('keypress', e => {
+                if(!e.code === 'Enter') return;
+                addTag(e.target.textContent);
+                inputTags.textContent = '';
+                tagsDrop.innerHTML = '';
+                inputTags.focus();
+            })
+
+            inputTags.addEventListener('dblclick', e => {
+                const fragment = document.createDocumentFragment();
+                users.forEach(user => {
+                const li = document.createElement('LI');
+                li.setAttribute('class', 'tags-drop__item');
+                li.setAttribute('tabindex', '0');
+                li.textContent = user;
+                fragment.appendChild(li);
+                })
+                tagsDrop.appendChild(fragment);
+            })
+            document.addEventListener('keyup', e => {
+                if (!e.code !== 'Escape') return;
+                console.log('pl')
+            })
+        </script>
+
+    </body>
+
+</html>

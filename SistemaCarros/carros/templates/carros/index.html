@@ -1,0 +1,167 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+<div class="page-content">
+   <div class="container-fluid">
+      <!-- start page title -->
+      <div class="row">
+         <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+               <h4 class="mb-0">Vehicles</h4>
+               <div class="page-title-right">
+                  <ol class="breadcrumb m-0">
+                     <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                     <li class="breadcrumb-item active">Vehicles</li>
+                  </ol>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end page title -->
+      <div class="row">
+         <div class="col-12">
+            <form method="post">
+               {% csrf_token %}
+               <div class="d-flex justify-content-between">
+                  <a href="{% url 'carros:create_carros' %}"><button type="button" class="btn btn-success mb-3 waves-effect waves-light" onclick="addNewVehicle()">Add new</button></a>
+                  <div class="col-md-6 mb-3 d-flex align-items-center justify-content-end">
+                        <div class="span-container d-flex">
+                           <input type="date" name="fromdate" class="form-control" data-date-inline-picker="true">
+                           <input type="date" name="todate" class="form-control" data-date-inline-picker="true">
+                           <input type="submit" value="Search" class="btn btn-secondary">
+                           <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                        </div>
+                        <!--                                                <input type="text" name="daterange" value="12/01/2021 - 12/31/2021" class="form-control" id="id_date_range"/>-->
+                     </div>
+               </div>
+               <div class="row">
+                  <div class="col-12">
+                     <div>
+                        <div>
+                           <div class="table-responsive mb-4">
+                              {% if carros %}
+                           <table class="table table-centered datatable dt-responsive nowrap table-card-list display" style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;" id="datatable">
+                              <thead>
+                                 <tr class="bg-transparent">
+                                    <th>Register since</th>
+                                    <th data-priority="1">Gallery</th>
+                                    <th data-priority="1">License plate</th>
+                                    <th data-priority="1">Year</th>
+                                    <th data-priority="3">Model</th>
+                                    <th data-priority="3">Color</th>
+                                    <th data-priority="3">Owner</th>
+                                    <th data-priority="1">Actions</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                              {% load static %}
+                                 {% for carro in carros %}
+                                 <tr>
+                                    <td>{{carro.fecha_registros.date}}</td>
+                                    {% if carro.new_name %}
+                                    <td>
+                                       <a data-id="{{carro.id}}" class="btn_view_gallery">
+                                          <img src="{% get_media_prefix %}{{carro.new_name}}" height="68">
+                                       </a>
+                                    </td>
+                                    {% else %}
+                                    <td></td>
+                                    {% endif %}
+                                    <td>{{carro.placas}}</td>
+                                    <td>{{carro.año}}</td>
+                                    <td>{{carro.modelo}}</td>
+                                    <td>{{carro.color}}</td>
+                                    <td>{{carro.cliente.nombre}}</td>
+                                    <td>
+                                       <!--                                                                <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="uil-search-alt"></i></a>-->
+                                       <a href="{% url 'carros:detail_carro' carro.id%}">Detail</a>
+                                    </td>
+                                    <td>
+                                       <a href="{% url 'carros:edit_carros' carro.id%}">Edit</a>
+                                    </td>
+                                    <td>
+                                       <a href="{% url 'carros:eliminar_carros' carro.id%}" class="text-danger" >Delete</a>
+                                    </td>
+                                 </tr>
+                                 {% endfor %}
+                              </tbody>
+                           </table>
+                              {% endif %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               </div>
+            </form>
+            </div>
+            </div>
+         </div>
+         <!-- end col -->
+      </div>
+      <!-- end row -->
+   </div>
+   <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+{% endblock %}
+
+{% block script %}
+<script>
+
+   //View image gallery modal after clicking main image in car list
+    var settings = {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            },
+            breakpoints: {
+            640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+            },
+            },
+        };
+     var swiper = new Swiper(".mySwiper", settings);
+
+    $(document).ready(function () {
+    $('.btn_view_gallery').on('click', function () {
+        var id = $(this).data('id');
+
+        $('#exampleModal').modal('show');
+        $.ajax({
+           url: 'image_detail',
+           type: 'POST',
+           data:{
+             'id':id
+           },
+           success: function (res) {
+              imgitems = JSON.parse(res);
+              var content = "";
+              for (item in imgitems){
+                 content += " <div class=\"swiper-slide\"><img src=\"{%  get_media_prefix %}"+imgitems[item]+"\" height=\"68\" style='width: 222px; height: 222px' class='img-thumbnail'></div>"
+
+              }
+
+              $('.image-content').html(content);
+               swiper.destroy();
+               swiper = new Swiper(".mySwiper", settings);
+           }
+        })
+    })
+   })
+</script>
+{% endblock %} 

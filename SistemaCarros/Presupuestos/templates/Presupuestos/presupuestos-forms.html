@@ -1,0 +1,504 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+
+
+
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+
+                {% block content %}
+                <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">Nuevo Presupuesto</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">Nuevo Presupuesto</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Agregar nuevo presupuesto...</h4>
+
+                                        <div id="vertical-example" class="vertical-wizard">
+                                            <!-- Seller Details -->
+                                            <h3>Detalles del cliente</h3>
+                                            <section>
+                                                <form method="post">
+                                                {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <div class="mb-3">
+
+                                                                    <label for="titulo" id="titulo">Título</label>
+                                                                    {{presupuestosclientesform.titulo}}
+<!--                                                                    <select class="form-select">
+                                                                            <option>Elige</option>
+                                                                            <option>Mrs.</option>
+                                                                            <option>Miss</option>
+                                                                            <option>Mr.</option>
+                                                                    </select>-->
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3">
+                                                                <label>Nombre</label>
+                                                                {{ presupuestosclientesform.nombre }}
+<!--
+                                                                <input type="text" class="form-control" id="nombre" name="nombre">
+-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="mb-3">
+                                                                <label>Apellido</label>
+                                                                {{ presupuestosclientesform.apellido }}
+<!--                                                                <input type="text" class="form-control" id="apellido" name="apellido">-->
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3">
+                                                                <label>Email</label>
+                                                                {{ presupuestosclientesform.correo }}
+<!--                                                                <input type="email" class="form-control" id="correo" name="correo">-->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Teléfono</label>
+                                                                {{ presupuestosclientesform.telefono }}
+<!--                                                                <input type="text" class="form-control" id="telefono" name="telefono">-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="mb-3">
+                                                                <label>Notas</label>
+                                                                {{ presupuestosclientesform.notas }}
+<!--                                                                <textarea name="notas" id="notas" class="form-control"></textarea>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </section>
+
+                                            <!-- Vehicle  -->
+                                            <h3>Vehículo </h3>
+                                            <section>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Placa</label>
+                                                                {{presupuestosvehiculosform.placas}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Año</label>
+                                                                {{presupuestosvehiculosform.año}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Modelo</label>
+                                                                {{presupuestosvehiculosform.modelo}}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Tipo</label>
+                                                                {{presupuestosvehiculosform.tipo}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Motor</label>
+                                                                {{presupuestosvehiculosform.motor}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>VIN</label>
+                                                                {{presupuestosvehiculosform.vin}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label>Color</label>
+                                                                {{presupuestosvehiculosform.color}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </section>
+
+                                            <!-- Parts -->
+                                            <h3>Partes</h3>
+                                            <section>
+                                            <div>
+                                                <form action='' method="POST">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Partes</h4>
+                                                                    <p class="card-title-desc">Agrega las partes que se incluirán</p>
+
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered table-nowrap align-middle">
+                                                                            <thead class="table-info">
+                                                                              <tr>
+                                                                                <th scope="col">Código</th>
+                                                                                <th scope="col">Descripción</th>
+                                                                                <th scope="col">Cantidad</th>
+                                                                                <th scope="col">Precio Unitario</th>
+                                                                                <th scope="col">Precio Total</th>
+                                                                                <th scope="col">Libre de Impuestos</th>
+                                                                                <th scope="col">Agrega Fila</th>
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td>
+                                                                                    {{presupuestosparteform.codigo}}
+                                                                                </td>
+                                                                                <td>
+                                                                                  {{presupuestosparteform.descripcion}}
+                                                                                </td>
+                                                                                <td>
+                                                                                  {{presupuestosparteform.quantity}}
+                                                                                </td>
+                                                                                <td>
+                                                                                  {{presupuestosparteform.unit_price}}
+                                                                                </td>
+                                                                                <td>
+                                                                                  {{presupuestosparteform.total_price}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div>
+                                                                                        {{presupuestosparteform.tax_free}}
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                  <input type="button" class="btn btn-block btn-default" id="add_more"  value="+" />
+                                                                                </td>
+
+                                                                              </tr>
+
+                                                                                {{ formset.management_form }}
+                                                                                 {% for form in formset %}
+                                                                              <tr id="formset" class="form-row">
+                                                                                   <td>
+                                                                                        {% render_field form.codigo class="form-control" %}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {% render_field form.descripcion class="form-control" %}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {% render_field form.quantity class="form-control" %}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {% render_field form.unit_price class="form-control" %}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {% render_field form.total_price class="form-control" %}
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        {% render_field form.tax_free class="form-check-input" %}
+                                                                                    </td>
+
+                                                                                  </tr>
+                                                                                {% endfor %}
+
+
+                                                                            </tbody>
+                                                                          </table>
+
+                                                                        <!--el row duplicado en el formset con empty-row-->
+
+                                                                          <div class="form-row" id="empty-row">
+                                                                              <table class="table table-bordered table-nowrap align-middle table-formset">
+                                                                                 <td>
+                                                                                     {% render_field formset.empty_form.codigo class="form-control" %}
+                                                                                 </td>
+                                                                                  <td>
+                                                                                      {% render_field formset.empty_form.descripcion class="form-control" %}
+                                                                                  </td>
+                                                                                  <td>
+                                                                                      {% render_field formset.empty_form.quantity class="form-control" %}
+                                                                                  </td>
+                                                                                  <td>
+                                                                                      {% render_field formset.empty_form.unit_price class="form-control" %}
+                                                                                  </td>
+                                                                                  <td>
+                                                                                      {% render_field formset.empty_form.total_price class="form-control" %}
+                                                                                  </td>
+                                                                                  <td>
+                                                                                      {% render_field formset.empty_form.tax_free class="form-check-input" %}
+                                                                                  </td>
+
+
+                                                                              </table>
+                                                                          </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!-- end col -->
+
+                                                    </div> <!-- end row -->
+
+                                                    <div class="row justify-content-end">
+                                                        <div class="col-md-3">
+                                                            <div class="mb-3">
+                                                                <label>Discount</label>
+                                                                {{presupuestosparteform.descuento}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-end">
+                                                        <div class="col-md-3">
+                                                            <div class="mb-3">
+                                                                <label><strong>TOTAL:</strong></label>
+                                                                {{presupuestosparteform.total}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                              </div>
+                                        </section>
+
+                                            <!-- Labor  -->
+                                            <h3>Mano de obra </h3>
+                                            <section>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Lista para Mano de Obra</h4>
+                                                                    <p class="card-title-desc">Agrega la mano de obra que deseas incluir</p>
+
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered table-nowrap align-middle" id="childTable2">
+                                                                            <thead class="table-info">
+                                                                              <tr>
+                                                                                <th scope="col">Código</th>
+                                                                                <th scope="col">Descripción</th>
+                                                                                <th scope="col">Técnico</th>
+                                                                                <th scope="col">Tarifa de hora</th>
+                                                                                <th scope="col">Horas</th>
+                                                                                <th scope="col">Minutos</th>
+                                                                                <th scope="col">Tarifa</th>
+                                                                                <th scope="col">Libre de impuestos</th>
+                                                                                <th scope="col">Agrega fila</th>
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td>
+                                                                                    {{presupuestosmanoobraform.codigo}}
+
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{presupuestosmanoobraform.descripcion}}
+
+                                                                                </td>
+                                                                                <td>
+
+                                                                                    {{presupuestosmanoobraform.tecnico}}
+
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{presupuestosmanoobraform.tarifa_hora}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{presupuestosmanoobraform.horas}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{presupuestosmanoobraform.minutos}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{presupuestosmanoobraform.tarifa}}
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="form-check">
+                                                                                        {{presupuestosmanoobraform.libre_impuestos}}
+                                                                                        <label class="form-check-label"></label>
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                  <input type="button" class="btn btn-block btn-default" id="addrow" onclick="childrenRow2()" value="+" />
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row justify-content-end">
+                                                        <div class="col-md-3">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Descuento</label>
+                                                                {{presupuestosparteform.descuento}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-end">
+                                                        <div class="col-md-3">
+                                                            <div class="mb-3">
+                                                                <label class="form-label"><strong>TOTAL:</strong></label>
+                                                                {{presupuestosparteform.total}}
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                            </section>
+
+                                            <!-- Pictures  -->
+                                            <h3>Fotos</h3>
+                                            <section>
+
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Lista de fotos</h4>
+                                                                    <p class="card-title-desc">Agrega imágenes</p>
+
+                                                                    <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                                                                    <label for="file-input">
+                                                                        <i class="fas fa-upload"></i>Choose a photo
+                                                                        <p id="num-of-files">No files chosen</p>
+                                                                        <div id="images"></div>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </section>
+
+                                            <!-- Payments  -->
+                                            <h3>Pagos </h3>
+                                            <section>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <h4 class="card-title">Lista de pagos</h4>
+                                                                     <p class="card-title-desc">Agrega los pagos</p>
+
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered table-nowrap align-middle" id="childTable3">
+                                                                            <thead class="table-info">
+                                                                              <tr>
+                                                                                <th scope="col">Tipo de pago</th>
+                                                                                <th scope="col">Cantidad pagada</th>
+                                                                                <th scope="col">Agrega pago</th>
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                              <tr>
+                                                                                <td>
+                                                                                    {{presupuestospagosform.tipo_pago}}
+
+                                                                                </td>
+                                                                                <td>
+                                                                                    {{presupuestospagosform.cantidad_pagada}}
+                                                                                </td>
+                                                                                <td>
+                                                                                  <input type="button" class="btn btn-block btn-default" onclick="childrenRow3()" value="+" />
+                                                                                </td>
+                                                                              </tr>
+                                                                            </tbody>
+                                                                          </table>
+
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </section>
+
+                                            <!-- Confirm  -->
+                                            <h3>Confirm</h3>
+                                            <section>
+                                                <div class="row justify-content-center">
+                                                    <div class="col-lg-6">
+                                                        <div class="text-center">
+                                                            <div class="mb-4">
+                                                                <i class="mdi mdi-check-circle-outline text-success display-4"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h5>Confirming estimate</h5>
+                                                                <p class="text-muted">If everything it´s ok, please click on "Finish" button.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                           </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+
+
+                </div>
+              </div>
+
+
+
+                <!-- End Page-content -->
+                {% endblock %}
+
+

@@ -1,0 +1,62 @@
+{% extends 'SistemaCarros/base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+
+{% block content %}
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">{% trans "Workshops" %}</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:dashboard' %}">Dashboard</a></li>
+                                            <li class="breadcrumb-item active">{% trans "Workshops" %}</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                                            <h4><b>{% trans "Workshops" %}:</b> {{ tiendas.nombre_taller }}</h4>
+                                                            <hr>
+                                                            <p><b>{% trans "Website" %}: </b>{{ tiendas.website }}</p>
+                                                            <p><b>{% trans "Country" %}: </b>{{ tiendas.pais }}</p>
+                                                            <p><b>{% trans "Address" %}: </b>{{ tiendas.direccion }}</p>
+                                                            <p><b>{% trans "City" %}: </b>{{ tiendas.ciudad }}</p>
+                                                            <p><b>{% trans "State" %}: </b>{{ tiendas.estado }}</p>
+                                                            <p><b>Plan: </b>{{ tiendas.plan }}</p>
+                                                            <p><b>{% trans "Status" %}: </b>{{ tiendas.status }}</p>
+
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row -->
+
+
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+            </div>
+
+{% endblock %}
